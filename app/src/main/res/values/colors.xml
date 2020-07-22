@@ -4,6 +4,18 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
 
+    <color name="transparent">#00000000</color>
 
     <color name="base_activity_bg">#E5E5E5</color>
+
+
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="app_color">#009688</color>
+    <color name="app_color_transy">#46009688</color>
+    <color name="app_bg_grey">#F3FAE1</color>
+    <color name="app_bg_sandal">#F7F6C5</color>
+    <color name="grey">#8C8C86</color>
+    <color name="grey_transy">#238C8C86</color>
+    <color name="gray">#d9d9d9</color>
 </resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="progress_loader_text_size">20sp</dimen>
+    
+    <dimen name="margin_8dp">8dp</dimen>
+
+    <!-- Text Sizes -->
+    <dimen name="textsize_20sp">20sp</dimen>
+    <dimen name="textsize_15dp">15sp</dimen>
+
+
+    <dimen name="_160dp">160dp</dimen>
+</resources>
