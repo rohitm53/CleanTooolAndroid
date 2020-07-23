@@ -9,19 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".appmodules.signup.WelcomeScreenActivity"></activity>
         <activity
             android:name=".appmodules.splashscreen.SplashScreenActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".appmodules.login.LoginActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".appmodules.signup.SignUpActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".appmodules.welcomscreen.WelcomeScreenActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

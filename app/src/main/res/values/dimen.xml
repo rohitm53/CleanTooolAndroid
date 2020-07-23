@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="progress_loader_text_size">20sp</dimen>
-    
+
     <dimen name="margin_8dp">8dp</dimen>
 
     <!-- Text Sizes -->
-    <dimen name="textsize_20sp">20sp</dimen>
-    <dimen name="textsize_15dp">15sp</dimen>
+    <dimen name="text_14sp">14sp</dimen>
+    <dimen name="text_15sp">15sp</dimen>
+    <dimen name="text_16sp">16sp</dimen>
+    <dimen name="text_18sp">18sp</dimen>
+    <dimen name="text_20sp">20sp</dimen>
 
 
-    <dimen name="_160dp">160dp</dimen>
+    <!-- Margin-->
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_16">16dp</dimen>
+    <dimen name="margin_20">20dp</dimen>
+    <dimen name="margin_30">30dp</dimen>
+    <dimen name="margin_40">40dp</dimen>
+    <dimen name="margin_50">50dp</dimen>
+
+    <!-- Welcome screen-->
+    <dimen name="welcome_logo_dimen">160dp</dimen>
+
+
+    <!--Sign up screen-->
+    <dimen name="signup_logo_dimen">100dp</dimen>
+
+
+
 </resources>

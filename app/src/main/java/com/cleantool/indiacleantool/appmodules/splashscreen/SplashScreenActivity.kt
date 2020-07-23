@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Handler
 import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.appmodules.commonmodule.BaseActivity
-import com.cleantool.indiacleantool.appmodules.signup.WelcomeScreenActivity
+import com.cleantool.indiacleantool.appmodules.welcomscreen.WelcomeScreenActivity
 import kotlinx.android.synthetic.main.base_activity.*
 
 class SplashScreenActivity : BaseActivity() {
