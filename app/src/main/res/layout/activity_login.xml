@@ -1,10 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".appmodules.login.LoginActivity">
+    android:orientation="vertical"
+    android:background="@drawable/login_bg">
+
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="@dimen/signup_logo_dimen"
+        android:layout_height="@dimen/signup_logo_dimen"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitXY"
+        android:src="@drawable/app_logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.100000024" />
+
+    <TextView
+        android:id="@+id/tv_welcome_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_20"
+        android:layout_marginTop="@dimen/margin_20"
+        android:layout_marginEnd="@dimen/margin_20"
+        android:fontFamily="@font/worksans_bolditalic"
+        android:text="@string/welcome_back"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/text_18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
+
+    <TextView
+        android:id="@+id/tv_sign_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_20"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/worksans_medium"
+        android:text="@string/signin_clean"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/text_18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_welcome_back" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/email"
+        android:textColorHint="@color/app_color"
+        app:backgroundTint="@color/colorPrimaryDark"
+        app:hintEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sign_in">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:focusableInTouchMode="true"
+            android:fontFamily="@font/worksans_regular"
+            android:imeOptions="actionDone"
+            android:inputType="textEmailAddress"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/app_color"
+            android:textColorHint="@color/app_color"
+            android:textSize="@dimen/text_14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:hint="@string/password"
+        android:textColorHint="@color/app_color"
+        app:hintEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ti_email"
+        app:passwordToggleDrawable="@drawable/pass_toggle"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/colorPrimaryDark">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:fontFamily="@font/worksans_regular"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:maxLength="18"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/app_color"
+            android:textColorHint="@color/app_color"
+            android:textSize="@dimen/text_14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_having_trouble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_20"
+        android:padding="10dp"
+        android:text="@string/having_trouble"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/text_12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ti_password" />
+
+
+    <Button
+        android:id="@+id/btnSignin"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/margin_40"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_border_green"
+        android:fontFamily="@font/worksans_bold"
+        android:gravity="center"
+        android:paddingStart="@dimen/margin_50"
+        android:paddingEnd="@dimen/margin_50"
+        android:text="@string/start_cleaning"
+        android:textColor="@color/app_color"
+        android:textSize="@dimen/margin_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_having_trouble" />
+
+    <TextView
+        android:id="@+id/tvNotYou"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/not_you"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/text_16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSignin"
+        app:layout_constraintVertical_bias="0.100000024" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

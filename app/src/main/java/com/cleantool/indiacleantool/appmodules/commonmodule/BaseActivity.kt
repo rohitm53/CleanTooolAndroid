@@ -3,7 +3,6 @@ package com.cleantool.indiacleantool.appmodules.commonmodule
 import android.animation.ObjectAnimator
 import android.app.Dialog
 import android.content.Context
-import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
@@ -14,9 +13,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.res.ResourcesCompat
 import com.cleantool.indiacleantool.R
-import com.cleantool.indiacleantool.utils.animationutils.Flip3dAnimation
 import kotlinx.android.synthetic.main.base_activity.*
 
 abstract class BaseActivity : AppCompatActivity() {

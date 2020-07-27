@@ -28,7 +28,7 @@
     <string name="already_been">Already been cleaning? SignIn</string>
 
     <!-- HomeScreen -->
-    <string name="wat_can_we">What can we help with?</string>
+    <string name="msg_dashboard">What can we help with?</string>
     <string name="menu_history">History</string>
     <string name="menu_search">Search</string>
     <string name="menu_settings">Settings</string>

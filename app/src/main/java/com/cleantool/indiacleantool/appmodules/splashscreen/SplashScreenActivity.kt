@@ -19,5 +19,6 @@ class SplashScreenActivity : BaseActivity() {
     private fun navigateToLogin(){
         val intent = Intent(this, WelcomeScreenActivity::class.java)
         startActivity(intent)
+        finish()
     }
 }
