@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.cleantool.indiacleantool.R
 import kotlinx.android.synthetic.main.base_activity.*
+import kotlinx.android.synthetic.main.toolbar_common_header.*
 
 abstract class BaseActivity : AppCompatActivity() {
 
@@ -25,8 +26,16 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.base_activity)
+        initializHeader()
         initialize()
     }
+
+    private fun initializHeader(){
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+    }
+
 
     fun showLoader(message: String){
         hideLoader()
@@ -71,8 +80,6 @@ abstract class BaseActivity : AppCompatActivity() {
 
             progressDialog.setCancelable(false)
             progressDialog.show()
-
-
         }
     }
 

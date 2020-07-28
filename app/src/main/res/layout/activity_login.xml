@@ -54,7 +54,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:hint="@string/email"
-        android:textColorHint="@color/app_color"
+        android:textColorHint="@color/white"
         app:backgroundTint="@color/colorPrimaryDark"
         app:hintEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,18 +62,18 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_sign_in">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editEmail"
+            android:id="@+id/ed_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorPrimaryDark"
+            android:backgroundTint="@color/white"
             android:focusableInTouchMode="true"
             android:fontFamily="@font/worksans_regular"
             android:imeOptions="actionDone"
             android:inputType="textEmailAddress"
             android:singleLine="true"
             android:text=""
-            android:textColor="@color/app_color"
-            android:textColorHint="@color/app_color"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
             android:textSize="@dimen/text_14sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -84,30 +84,30 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/colorPrimaryDark"
+        android:backgroundTint="@color/white"
         android:hint="@string/password"
-        android:textColorHint="@color/app_color"
+        android:textColorHint="@color/white"
         app:hintEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ti_email"
         app:passwordToggleDrawable="@drawable/pass_toggle"
         app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/colorPrimaryDark">
+        app:passwordToggleTint="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editPass"
+            android:id="@+id/ed_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorPrimaryDark"
+            android:backgroundTint="@color/white"
             android:fontFamily="@font/worksans_regular"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
             android:maxLength="18"
             android:singleLine="true"
             android:text=""
-            android:textColor="@color/app_color"
-            android:textColorHint="@color/app_color"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
             android:textSize="@dimen/text_14sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -118,7 +118,7 @@
         android:layout_marginTop="@dimen/margin_20"
         android:padding="10dp"
         android:text="@string/having_trouble"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/white"
         android:textSize="@dimen/text_12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -126,7 +126,7 @@
 
 
     <Button
-        android:id="@+id/btnSignin"
+        android:id="@+id/btn_signin"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/margin_40"
         android:layout_marginTop="16dp"
@@ -147,12 +147,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/not_you"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/white"
         android:textSize="@dimen/text_16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignin"
+        app:layout_constraintTop_toBottomOf="@+id/btn_signin"
         app:layout_constraintVertical_bias="0.100000024" />
 
 

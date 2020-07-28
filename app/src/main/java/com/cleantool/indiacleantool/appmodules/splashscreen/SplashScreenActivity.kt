@@ -17,6 +17,7 @@ class SplashScreenActivity : BaseActivity() {
     }
 
     private fun navigateToLogin(){
+        hideLoader()
         val intent = Intent(this, WelcomeScreenActivity::class.java)
         startActivity(intent)
         finish()
