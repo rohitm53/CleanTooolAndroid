@@ -1,5 +1,6 @@
 package com.cleantool.indiacleantool.appmodules.dashboard.home
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,15 +9,14 @@ import android.widget.ScrollView
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.cleantool.indiacleantool.R
+import com.cleantool.indiacleantool.models.services.Services
+import com.cleantool.indiacleantool.utils.recylerviewitemdecoration.SpacesItemDecoration
 
-class DashboardHomeFragment : Fragment {
-
-    var position : Int = 0
-
-    constructor( position : Int){
-        this.position=position
-    }
+class DashboardHomeFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,19 +24,51 @@ class DashboardHomeFragment : Fragment {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_dashboard_home,container,false)
-        val textview = view.findViewById<TextView>(R.id.textview)
-        val content = view.findViewById<ScrollView>(R.id.content)
-        textview.text= (position+1).toString()
-        if(position==0){
-            content.setBackgroundColor(ResourcesCompat.getColor(getResources(),R.color.colorPrimary,null))
-        }else if(position==1){
-            content.setBackgroundColor(ResourcesCompat.getColor(getResources(),R.color.colorAccent,null))
-        }else if(position==2){
-            content.setBackgroundColor(ResourcesCompat.getColor(getResources(),R.color.app_color,null))
-        }else{
-            content.setBackgroundColor(ResourcesCompat.getColor(getResources(),R.color.orange,null))
-        }
+
+        val rv_service = view.findViewById<RecyclerView>(R.id.rv_service)
+
+        val gridLayoutManager = GridLayoutManager(context,3)
+        rv_service.layoutManager=gridLayoutManager
+        rv_service.setHasFixedSize(true)
+        rv_service.adapter = HomeServiceGridAdapter(this.requireActivity(),loadData())
+
+        rv_service.addItemDecoration(SpacesItemDecoration(10))
 
         return view
+    }
+
+    private fun loadData() : List<Services> {
+
+        val listServices = ArrayList<Services>()
+
+        var services = Services("Basic Cleaning",R.drawable.home_icon)
+        listServices.add(services)
+
+        services = Services("Home Cleaning",R.drawable.home_icon)
+        listServices.add(services)
+
+        services = Services("Office Cleaning",R.drawable.home_icon)
+        listServices.add(services)
+
+        services = Services("Move in cleaning",R.drawable.home_icon)
+        listServices.add(services)
+
+        services = Services("Move out cleaning",R.drawable.home_icon)
+        listServices.add(services)
+
+        services = Services("After Party Cleaning",R.drawable.home_icon)
+        listServices.add(services)
+
+        services = Services("Clothes Cleaning",R.drawable.home_icon)
+        listServices.add(services)
+
+        services = Services("Clothes Cleaning",R.drawable.home_icon)
+        listServices.add(services)
+
+
+        services = Services("Car Cleaning",R.drawable.home_icon)
+        listServices.add(services)
+
+        return listServices
     }
 }

@@ -14,6 +14,6 @@ class DashboardPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateA
     }
 
     override fun createFragment(position: Int): Fragment {
-        return DashboardHomeFragment(position)
+        return DashboardHomeFragment()
     }
 }
