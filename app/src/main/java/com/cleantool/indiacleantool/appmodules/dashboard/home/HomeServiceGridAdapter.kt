@@ -1,6 +1,7 @@
 package com.cleantool.indiacleantool.appmodules.dashboard.home
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,22 +9,26 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.cleantool.indiacleantool.R
+import com.cleantool.indiacleantool.appmodules.dashboard.CleanTypeSelectorListner
+import com.cleantool.indiacleantool.appmodules.homecleaning.HomeCleaningActivity
 import com.cleantool.indiacleantool.models.services.Services
 
 
 class HomeServiceGridAdapter() : RecyclerView.Adapter<HomeServiceGridAdapter.HomerServiceViewHolder>() {
 
-     lateinit var context: Context
-     lateinit var listServices: List<Services>
+    lateinit var context: Context
+    lateinit var listServices: List<Services>
+    private lateinit var cleanTypeSelectorListner: CleanTypeSelectorListner
 
-    constructor(context: Context,listServices:List<Services>) : this() {
+    constructor(context: Context,listServices:List<Services>,cleanTypeSelectorListner: CleanTypeSelectorListner) : this() {
         this.context=context
         this.listServices=listServices
+        this.cleanTypeSelectorListner=cleanTypeSelectorListner
     }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomerServiceViewHolder {
-        val convertView = LayoutInflater.from(context).inflate(R.layout.services_adapter_cell,parent,false)
+        val convertView = LayoutInflater.from(context).inflate(R.layout.adapter_services_cell,parent,false)
         return HomerServiceViewHolder(convertView)
     }
 
@@ -37,6 +42,11 @@ class HomeServiceGridAdapter() : RecyclerView.Adapter<HomeServiceGridAdapter.Hom
 
     override fun onBindViewHolder(holder: HomerServiceViewHolder, position: Int) {
         holder.tv_service_name.text=listServices[position].serviceName
+
+        holder.itemView.setOnClickListener{
+            cleanTypeSelectorListner.moveToSelectedCleaningActvity(listServices[position].serviceCode)
+        }
+
     }
 
     inner class HomerServiceViewHolder(itemView : View)  : RecyclerView.ViewHolder(itemView){

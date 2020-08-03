@@ -13,7 +13,7 @@ class SplashScreenActivity : BaseActivity() {
         layoutInflater.inflate(R.layout.activity_splash_screen,ll_body,true)
         hideToolbar()
         showLoader("Initialising...")
-        Handler().postDelayed({navigateToLogin()},3000)
+        Handler().postDelayed({navigateToLogin()},1000)
     }
 
     private fun navigateToLogin(){
