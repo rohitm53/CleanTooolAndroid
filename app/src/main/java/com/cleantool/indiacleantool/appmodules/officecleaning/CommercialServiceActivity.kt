@@ -4,13 +4,13 @@ import android.content.res.Resources
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.appmodules.commonmodule.BaseActivity
-import kotlinx.android.synthetic.main.activity_home_cleaning.*
+import kotlinx.android.synthetic.main.activity_household_service.*
 import kotlinx.android.synthetic.main.base_activity.*
 
-class OfficeCleaningActivity : BaseActivity(){
+class CommercialServiceActivity : BaseActivity(){
 
     override fun initialize() {
-        layoutInflater.inflate(R.layout.activity_office_cleaning,ll_body,true)
+        layoutInflater.inflate(R.layout.activity_commercial_service,ll_body,true)
         setMapFrameHeight()
     }
 

@@ -12,8 +12,8 @@ class SpacesItemDecoration(var space:Int) :  RecyclerView.ItemDecoration() {
         parent: RecyclerView,
         state: RecyclerView.State
     ) {
-        outRect.left = space/2;
-        outRect.right = space/2;
+        outRect.left = space;
+        outRect.right = space;
         outRect.bottom = space;
 
 

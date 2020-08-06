@@ -2,27 +2,22 @@ package com.cleantool.indiacleantool.appmodules.homecleaning
 
 import android.content.Intent
 import android.content.res.Resources
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.widget.FrameLayout
-import android.widget.LinearLayout
-import android.widget.SeekBar
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.appmodules.commonmodule.BaseActivity
-import com.cleantool.indiacleantool.appmodules.servicecompany.ServiceCompanyListActivity
-import kotlinx.android.synthetic.main.activity_home_cleaning.*
+import com.cleantool.indiacleantool.appmodules.servicecompany.ConfirmationScreenActivity
+import kotlinx.android.synthetic.main.activity_household_service.*
 import kotlinx.android.synthetic.main.base_activity.*
 
-class HomeCleaningActivity : BaseActivity() {
+class HouseholdServiceActivity : BaseActivity() {
 
 
     override fun initialize() {
-        layoutInflater.inflate(R.layout.activity_home_cleaning,ll_body,true)
+        layoutInflater.inflate(R.layout.activity_household_service,ll_body,true)
         setMapFrameHeight()
 
         btn_continue.setOnClickListener {
-            val intent = Intent(this,ServiceCompanyListActivity::class.java)
+            val intent = Intent(this,ConfirmationScreenActivity::class.java)
             startActivity(intent)
         }
     }

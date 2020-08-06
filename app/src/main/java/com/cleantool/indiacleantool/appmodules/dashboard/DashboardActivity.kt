@@ -1,10 +1,11 @@
 package com.cleantool.indiacleantool.appmodules.dashboard
 
 import android.content.Intent
+import android.widget.PopupMenu
 import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.appmodules.commonmodule.BaseActivity
-import com.cleantool.indiacleantool.appmodules.homecleaning.HomeCleaningActivity
-import com.cleantool.indiacleantool.appmodules.officecleaning.OfficeCleaningActivity
+import com.cleantool.indiacleantool.appmodules.homecleaning.HouseholdServiceActivity
+import com.cleantool.indiacleantool.appmodules.officecleaning.CommercialServiceActivity
 import com.cleantool.indiacleantool.common.Constants
 import com.cleantool.indiacleantool.utils.viewpagertransformer.ZoomOutPageTransformer
 import com.romainpiel.shimmer.Shimmer
@@ -16,10 +17,8 @@ class DashboardActivity : BaseActivity() , CleanTypeSelectorListner {
     override fun initialize() {
         layoutInflater.inflate(R.layout.activity_dashboard,ll_body,true)
         shimmerTextDisplay()
-
         viewpager.setPageTransformer(ZoomOutPageTransformer())
         viewpager.adapter = DashboardPagerAdapter(this,this)
-
 
     }
 
@@ -30,26 +29,10 @@ class DashboardActivity : BaseActivity() , CleanTypeSelectorListner {
     }
 
     override fun moveToSelectedCleaningActvity(cleaning_code: String) {
-        when(cleaning_code){
-            Constants.Home_Cleaning -> {
-                val intent = Intent(this,HomeCleaningActivity::class.java)
-                startActivity(intent)
-            }
 
-            Constants.Office_Cleaning -> {
-                val intent = Intent(this,OfficeCleaningActivity::class.java)
-                startActivity(intent)
-            }
+        val popupMenu=PopupMenu(this,layoutInflater.inflate(R.layout.service_hover_menu,null,false))
 
-            Constants.Move_In_Cleaning -> {
-            }
-            Constants.Move_Out_Cleaning -> {
-            }
-            Constants.Laundary -> {
-            }
-
-        }
-
+        popupMenu.show()
     }
 
 }

@@ -41,15 +41,15 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".appmodules.homecleaning.HomeCleaningActivity"
+            android:name=".appmodules.homecleaning.HouseholdServiceActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".appmodules.servicecompany.ServiceCompanyListActivity"
+            android:name=".appmodules.servicecompany.ConfirmationScreenActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"/>
         <activity
-            android:name=".appmodules.officecleaning.OfficeCleaningActivity"
+            android:name=".appmodules.officecleaning.CommercialServiceActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"/>
     </application>

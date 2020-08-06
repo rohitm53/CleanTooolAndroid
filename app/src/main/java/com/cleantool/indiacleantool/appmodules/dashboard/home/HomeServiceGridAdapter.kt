@@ -1,7 +1,6 @@
 package com.cleantool.indiacleantool.appmodules.dashboard.home
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.appmodules.dashboard.CleanTypeSelectorListner
-import com.cleantool.indiacleantool.appmodules.homecleaning.HomeCleaningActivity
 import com.cleantool.indiacleantool.models.services.Services
 
 
@@ -42,6 +40,7 @@ class HomeServiceGridAdapter() : RecyclerView.Adapter<HomeServiceGridAdapter.Hom
 
     override fun onBindViewHolder(holder: HomerServiceViewHolder, position: Int) {
         holder.tv_service_name.text=listServices[position].serviceName
+        holder.iv_image.setImageResource(listServices[position].imageId)
 
         holder.itemView.setOnClickListener{
             cleanTypeSelectorListner.moveToSelectedCleaningActvity(listServices[position].serviceCode)

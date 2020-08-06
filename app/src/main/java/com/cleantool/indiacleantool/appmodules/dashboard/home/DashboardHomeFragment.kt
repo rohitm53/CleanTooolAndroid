@@ -30,12 +30,12 @@ class DashboardHomeFragment() : Fragment() {
 
         val rv_service = view.findViewById<RecyclerView>(R.id.rv_service)
 
-        val gridLayoutManager = GridLayoutManager(context,3)
+        val gridLayoutManager = GridLayoutManager(context,2)
         rv_service.layoutManager=gridLayoutManager
         rv_service.setHasFixedSize(true)
         rv_service.adapter = HomeServiceGridAdapter(this.requireActivity(),loadData(),cleanTypeSelectorListner)
 
-        rv_service.addItemDecoration(SpacesItemDecoration(10))
+        rv_service.addItemDecoration(SpacesItemDecoration(1))
 
         return view
     }
@@ -44,16 +44,16 @@ class DashboardHomeFragment() : Fragment() {
 
         val listServices = ArrayList<Services>()
 
-        var services = Services("House-hold Cleaning",R.drawable.home_icon,Constants.Home_Cleaning)
+        var services = Services(Constants.House_Hold_Services,R.drawable.house_hold_icon,Constants.House_Hold_Services)
         listServices.add(services)
 
-        services = Services("Office Cleaning",R.drawable.home_icon,Constants.Office_Cleaning)
+        services = Services(Constants.Commercial_Services,R.drawable.commercial_icon,Constants.Commercial_Services)
         listServices.add(services)
 
-        services = Services("Move-in Cleaning",R.drawable.home_icon,Constants.Move_In_Cleaning)
+        services = Services(Constants.Laundary_Service,R.drawable.laundary_icon,Constants.Laundary_Service)
         listServices.add(services)
 
-        services = Services("Laundary",R.drawable.home_icon,Constants.Laundary)
+        services = Services(Constants.Gardening_Service,R.drawable.garden_icon,Constants.Gardening_Service)
         listServices.add(services)
 
         return listServices
