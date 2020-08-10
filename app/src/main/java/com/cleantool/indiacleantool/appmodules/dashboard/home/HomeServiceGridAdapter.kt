@@ -43,7 +43,7 @@ class HomeServiceGridAdapter() : RecyclerView.Adapter<HomeServiceGridAdapter.Hom
         holder.iv_image.setImageResource(listServices[position].imageId)
 
         holder.itemView.setOnClickListener{
-            cleanTypeSelectorListner.moveToSelectedCleaningActvity(listServices[position].serviceCode)
+            cleanTypeSelectorListner.moveToSelectedCleaningActvity(holder.itemView,listServices[position].serviceCode)
         }
 
     }

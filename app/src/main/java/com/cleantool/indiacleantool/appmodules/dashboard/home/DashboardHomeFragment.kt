@@ -35,7 +35,7 @@ class DashboardHomeFragment() : Fragment() {
         rv_service.setHasFixedSize(true)
         rv_service.adapter = HomeServiceGridAdapter(this.requireActivity(),loadData(),cleanTypeSelectorListner)
 
-        rv_service.addItemDecoration(SpacesItemDecoration(1))
+        rv_service.addItemDecoration(SpacesItemDecoration(10))
 
         return view
     }

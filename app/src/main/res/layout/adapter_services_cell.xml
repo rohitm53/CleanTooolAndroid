@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="@dimen/margin_5">
+    android:padding="@dimen/margin_5"
+   >
 
     <ImageView
         android:id="@+id/iv_image"
@@ -20,9 +21,9 @@
         android:layout_height="wrap_content"
         android:text="After Party\nCleaning"
         android:layout_gravity="center|left"
-        android:fontFamily="@font/worksans_bold"
+        android:fontFamily="@font/worksans_regular"
         android:textColor="@color/black"
         android:gravity="center"
-        android:textSize="@dimen/text_20sp"
+        android:textSize="@dimen/text_15sp"
         />
 </LinearLayout>

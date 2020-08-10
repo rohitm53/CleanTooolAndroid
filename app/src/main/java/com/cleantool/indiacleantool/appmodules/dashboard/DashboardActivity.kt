@@ -1,11 +1,16 @@
 package com.cleantool.indiacleantool.appmodules.dashboard
 
 import android.content.Intent
-import android.widget.PopupMenu
+import android.graphics.drawable.ColorDrawable
+import android.util.DisplayMetrics
+import android.util.TypedValue
+import android.view.View
+import android.widget.ImageView
+import android.widget.PopupWindow
+import androidx.core.content.ContextCompat
 import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.appmodules.commonmodule.BaseActivity
-import com.cleantool.indiacleantool.appmodules.homecleaning.HouseholdServiceActivity
-import com.cleantool.indiacleantool.appmodules.officecleaning.CommercialServiceActivity
+import com.cleantool.indiacleantool.appmodules.providercompany.ProviderCompanyListActivity
 import com.cleantool.indiacleantool.common.Constants
 import com.cleantool.indiacleantool.utils.viewpagertransformer.ZoomOutPageTransformer
 import com.romainpiel.shimmer.Shimmer
@@ -14,25 +19,69 @@ import kotlinx.android.synthetic.main.base_activity.*
 
 class DashboardActivity : BaseActivity() , CleanTypeSelectorListner {
 
+    private  var popupWindow: PopupWindow?=null;
+
     override fun initialize() {
         layoutInflater.inflate(R.layout.activity_dashboard,ll_body,true)
-        shimmerTextDisplay()
         viewpager.setPageTransformer(ZoomOutPageTransformer())
         viewpager.adapter = DashboardPagerAdapter(this,this)
 
     }
 
-    private fun shimmerTextDisplay(){
-        val shimmer = Shimmer()
-        shimmer.start(tv_msg)
-        shimmer.duration = 3000
+
+    override fun moveToSelectedCleaningActvity(view: View, cleaning_code: String) {
+
+        if(popupWindow!=null && popupWindow?.isShowing!!){
+            popupWindow?.dismiss()
+        }
+        when(cleaning_code){
+            Constants.House_Hold_Services -> showHouseholdServicePopUp(view)
+            Constants.Commercial_Services -> showHouseholdServicePopUp(view)
+        }
     }
 
-    override fun moveToSelectedCleaningActvity(cleaning_code: String) {
+    override fun onBackPressed() {
+        if(popupWindow!=null && popupWindow?.isShowing!!){
+            popupWindow?.dismiss()
+        }else{
+            super.onBackPressed()
+        }
+    }
 
-        val popupMenu=PopupMenu(this,layoutInflater.inflate(R.layout.service_hover_menu,null,false))
+    fun showHouseholdServicePopUp(view: View){
+        popupWindow = PopupWindow(this)
+        popupWindow?.contentView=layoutInflater.inflate(R.layout.service_hover_menu,null)
+        popupWindow?.isOutsideTouchable=true
 
-        popupMenu.show()
+        popupWindow?.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
+
+        val iv_utensils = popupWindow?.contentView?.findViewById<ImageView>(R.id.iv_utensils)
+        val iv_mopping_bromming = popupWindow?.contentView?.findViewById<ImageView>(R.id.iv_mopping_bromming)
+        val iv_bathroom = popupWindow?.contentView?.findViewById<ImageView>(R.id.iv_bathroom)
+        val iv_toilet = popupWindow?.contentView?.findViewById<ImageView>(R.id.iv_toilet)
+        val iv_combine = popupWindow?.contentView?.findViewById<ImageView>(R.id.iv_combine)
+
+        iv_utensils?.setOnClickListener {
+            val intent = Intent(this,ProviderCompanyListActivity::class.java)
+            startActivity(intent)
+        }
+        iv_mopping_bromming?.setOnClickListener {
+            val intent = Intent(this,ProviderCompanyListActivity::class.java)
+            startActivity(intent)
+        }
+        iv_bathroom?.setOnClickListener {
+            val intent = Intent(this,ProviderCompanyListActivity::class.java)
+            startActivity(intent)
+        }
+        iv_toilet?.setOnClickListener {
+            val intent = Intent(this,ProviderCompanyListActivity::class.java)
+            startActivity(intent)
+        }
+        iv_combine?.setOnClickListener {
+            val intent = Intent(this,ProviderCompanyListActivity::class.java)
+            startActivity(intent)
+        }
+        popupWindow?.showAsDropDown(view)
     }
 
 }

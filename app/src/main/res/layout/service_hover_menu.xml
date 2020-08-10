@@ -1,18 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/service_hover_bg">
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/utensils" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_utensils"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:padding="@dimen/margin_5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/utensils" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="@dimen/margin_5"
+                android:text="Utensils"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/iv_utensils"
+                app:layout_constraintStart_toStartOf="@+id/iv_utensils"
+                app:layout_constraintTop_toBottomOf="@+id/iv_utensils" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="@dimen/margin_5"
+                android:text="Mopping\nBrooming"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/iv_mopping_bromming"
+                app:layout_constraintStart_toStartOf="@+id/iv_mopping_bromming"
+                app:layout_constraintTop_toBottomOf="@+id/iv_mopping_bromming" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="@dimen/margin_5"
+                android:text="Bathroom"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/iv_bathroom"
+                app:layout_constraintStart_toStartOf="@+id/iv_bathroom"
+                app:layout_constraintTop_toBottomOf="@+id/iv_bathroom" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="@dimen/margin_5"
+                android:text="Toilet"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/iv_toilet"
+                app:layout_constraintStart_toStartOf="@+id/iv_toilet"
+                app:layout_constraintTop_toBottomOf="@+id/iv_toilet" />
+
+            <ImageView
+                android:id="@+id/iv_mopping_bromming"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="8dp"
+                android:padding="@dimen/margin_5"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_utensils"
+                app:layout_constraintStart_toEndOf="@+id/iv_utensils"
+                app:layout_constraintTop_toTopOf="@+id/iv_utensils"
+                app:srcCompat="@drawable/mopping" />
+
+            <ImageView
+                android:id="@+id/iv_bathroom"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="8dp"
+                android:padding="@dimen/margin_5"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_mopping_bromming"
+                app:layout_constraintStart_toEndOf="@+id/iv_mopping_bromming"
+                app:layout_constraintTop_toTopOf="@+id/iv_mopping_bromming"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/bathroom" />
+
+            <ImageView
+                android:id="@+id/iv_toilet"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="8dp"
+                android:padding="@dimen/margin_5"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_bathroom"
+                app:layout_constraintStart_toEndOf="@+id/iv_bathroom"
+                app:layout_constraintTop_toTopOf="@+id/iv_bathroom"
+                app:srcCompat="@drawable/toilet" />
+
+            <ImageView
+                android:id="@+id/iv_combine"
+                android:layout_width="40dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:padding="@dimen/margin_5"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_toilet"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_toilet"
+                app:layout_constraintTop_toTopOf="@+id/iv_toilet"
+                app:srcCompat="@drawable/plus" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </HorizontalScrollView>
+</LinearLayout>
+
+
+
+
+

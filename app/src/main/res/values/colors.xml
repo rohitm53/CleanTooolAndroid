@@ -18,6 +18,7 @@
     <color name="app_bg_sandal">#F7F6C5</color>
     <color name="grey">#8C8C86</color>
     <color name="grey_transy">#238C8C86</color>
+    <color name="light_gray">#C0C0C0</color>
     <color name="gray">#d9d9d9</color>
     <color name="persian_blue">#030056</color>
 </resources>
