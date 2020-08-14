@@ -1,6 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+   >
+
+    <TextView
+        android:id="@+id/tv_sno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="1"
+        android:paddingStart="@dimen/margin_10"
+        android:textSize="@dimen/text_25sp"
+        android:textColor="@color/white"
+        android:background="@drawable/sno_bg"
+        android:fontFamily="@font/worksans_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_starttime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/worksans_regular"
+        android:text="00:12"
+        android:gravity="center"
+        android:textSize="@dimen/text_20sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_sno"
+        app:layout_constraintTop_toTopOf="@+id/tv_sno" />
+
+    <TextView
+        android:id="@+id/tv_endTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/worksans_regular"
+        android:gravity="center"
+        android:text="00:12"
+        android:textSize="@dimen/text_20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toEndOf="@+id/tv_starttime"
+        app:layout_constraintTop_toTopOf="@+id/tv_starttime" />
+
+    <TextView
+        android:id="@+id/tv_availablePersons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/worksans_regular"
+        android:text="10"
+        android:gravity="center"
+        android:textSize="@dimen/text_20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_endTime"
+        app:layout_constraintTop_toTopOf="@+id/tv_starttime" />
+
+    <TextView
+        android:id="@+id/tv_enterReqPerson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/worksans_regular"
+        android:text="Enter req persons"
+        android:gravity="center"
+        android:textSize="@dimen/text_18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sno" />
+
+    <EditText
+        android:id="@+id/ed_req_person"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:textSize="@dimen/text_20sp"
+        android:inputType="number"
+        android:hint="0"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@+id/tv_enterReqPerson"
+        app:layout_constraintTop_toBottomOf="@+id/tv_endTime" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_req_person" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

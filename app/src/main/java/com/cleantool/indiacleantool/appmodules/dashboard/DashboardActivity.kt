@@ -62,24 +62,39 @@ class DashboardActivity : BaseActivity() , CleanTypeSelectorListner {
         val iv_combine = popupWindow?.contentView?.findViewById<ImageView>(R.id.iv_combine)
 
         iv_utensils?.setOnClickListener {
+            showLoader("Loading...")
             val intent = Intent(this,ProviderCompanyListActivity::class.java)
             startActivity(intent)
+            popupWindow?.dismiss()
+            hideLoader()
         }
         iv_mopping_bromming?.setOnClickListener {
+            showLoader("Loading...")
             val intent = Intent(this,ProviderCompanyListActivity::class.java)
             startActivity(intent)
+            popupWindow?.dismiss()
+            hideLoader()
         }
         iv_bathroom?.setOnClickListener {
+            showLoader("Loading...")
             val intent = Intent(this,ProviderCompanyListActivity::class.java)
             startActivity(intent)
+            popupWindow?.dismiss()
+            hideLoader()
         }
         iv_toilet?.setOnClickListener {
+            showLoader("Loading...")
             val intent = Intent(this,ProviderCompanyListActivity::class.java)
             startActivity(intent)
+            popupWindow?.dismiss()
+            hideLoader()
         }
         iv_combine?.setOnClickListener {
+            showLoader("Loading...")
             val intent = Intent(this,ProviderCompanyListActivity::class.java)
             startActivity(intent)
+            popupWindow?.dismiss()
+            hideLoader()
         }
         popupWindow?.showAsDropDown(view)
     }

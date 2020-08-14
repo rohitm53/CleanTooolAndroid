@@ -3,6 +3,7 @@
     package="com.cleantool.indiacleantool">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -41,17 +42,10 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".appmodules.homecleaning.HouseholdServiceActivity"
+            android:name=".appmodules.providercompany.ProviderCompanyListActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name=".appmodules.servicecompany.ConfirmationScreenActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity
-            android:name=".appmodules.officecleaning.CommercialServiceActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
     </application>
 
 </manifest>
