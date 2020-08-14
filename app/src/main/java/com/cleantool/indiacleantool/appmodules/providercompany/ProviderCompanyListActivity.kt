@@ -19,15 +19,17 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_provider_company_list_activity.*
 import kotlinx.android.synthetic.main.base_activity.*
 import java.time.LocalDateTime
 
 
-class ProviderCompanyListActivity : BaseActivity() , OnMapReadyCallback {
+class ProviderCompanyListActivity : BaseActivity() , OnMapReadyCallback , CapturePersonReqListner {
 
     private lateinit var listProvidingCompany : List<ProvidingCompanyTimeSlotsDetails>
     private  var googleMap: GoogleMap?=null
+    private lateinit var  snackbar: Snackbar
 
 
     override fun initialize() {
@@ -152,9 +154,11 @@ class ProviderCompanyListActivity : BaseActivity() , OnMapReadyCallback {
     class CompanyPagerAdapter : FragmentStateAdapter{
 
         private var  listprovidingCompanyTimeSlots: List<ProvidingCompanyTimeSlotsDetails>
+        private var capturePersonReqListner: CapturePersonReqListner
 
         constructor(fragmentActivity: FragmentActivity,listprovidingCompanyTimeSlots: List<ProvidingCompanyTimeSlotsDetails>): super(fragmentActivity){
             this.listprovidingCompanyTimeSlots=listprovidingCompanyTimeSlots
+            this.capturePersonReqListner = fragmentActivity as CapturePersonReqListner
         }
 
         override fun getItemCount(): Int {
@@ -166,8 +170,18 @@ class ProviderCompanyListActivity : BaseActivity() , OnMapReadyCallback {
         }
 
         override fun createFragment(position: Int): Fragment {
-            return ProviderCompanyFragment(listprovidingCompanyTimeSlots[position])
+            return ProviderCompanyFragment(listprovidingCompanyTimeSlots[position],capturePersonReqListner)
         }
+    }
+
+    override fun openSnackBar() {
+        val num = 0
+        snackbar = Snackbar.make(ll_body,"Person req"+num,Snackbar.LENGTH_LONG)
+        snackbar.show()
+    }
+
+    override fun onPersonNumAdded(strNum: String) {
+
     }
 
 }

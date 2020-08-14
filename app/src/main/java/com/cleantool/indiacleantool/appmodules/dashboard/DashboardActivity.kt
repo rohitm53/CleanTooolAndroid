@@ -2,18 +2,14 @@ package com.cleantool.indiacleantool.appmodules.dashboard
 
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
-import android.util.DisplayMetrics
-import android.util.TypedValue
 import android.view.View
 import android.widget.ImageView
 import android.widget.PopupWindow
-import androidx.core.content.ContextCompat
 import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.appmodules.commonmodule.BaseActivity
 import com.cleantool.indiacleantool.appmodules.providercompany.ProviderCompanyListActivity
 import com.cleantool.indiacleantool.common.Constants
 import com.cleantool.indiacleantool.utils.viewpagertransformer.ZoomOutPageTransformer
-import com.romainpiel.shimmer.Shimmer
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.base_activity.*
 
@@ -29,14 +25,14 @@ class DashboardActivity : BaseActivity() , CleanTypeSelectorListner {
     }
 
 
-    override fun moveToSelectedCleaningActvity(view: View, cleaning_code: String) {
+    override fun openServicePopup(view: View, cleaning_code: String) {
 
         if(popupWindow!=null && popupWindow?.isShowing!!){
             popupWindow?.dismiss()
         }
         when(cleaning_code){
-            Constants.House_Hold_Services -> showHouseholdServicePopUp(view)
-            Constants.Commercial_Services -> showHouseholdServicePopUp(view)
+            Constants.House_Hold_Type -> showHouseholdServicePopUp(view)
+            Constants.Commercial_Type -> showHouseholdServicePopUp(view)
         }
     }
 

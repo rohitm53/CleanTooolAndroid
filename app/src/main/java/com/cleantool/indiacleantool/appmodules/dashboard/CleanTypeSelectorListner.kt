@@ -4,5 +4,5 @@ import android.view.View
 
 interface CleanTypeSelectorListner {
 
-    fun moveToSelectedCleaningActvity(view: View, cleaning_code:String)
+    fun openServicePopup(view: View, serviceType:String)
 }

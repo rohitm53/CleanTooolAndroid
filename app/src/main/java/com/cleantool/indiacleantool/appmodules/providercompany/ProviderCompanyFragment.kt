@@ -13,9 +13,14 @@ import com.cleantool.indiacleantool.models.providingcompany.ProvidingCompanyTime
 class ProviderCompanyFragment() : Fragment() {
 
     private lateinit var providingCompanyTimeSlots: ProvidingCompanyTimeSlotsDetails
+    private lateinit var capturePersonReqInterface: CapturePersonReqListner
 
-    constructor(providingCompanyTimeSlots: ProvidingCompanyTimeSlotsDetails) : this(){
+    constructor(
+        providingCompanyTimeSlots: ProvidingCompanyTimeSlotsDetails,
+        capturePersonReqInterface: CapturePersonReqListner
+    ) : this(){
         this.providingCompanyTimeSlots=providingCompanyTimeSlots
+        this.capturePersonReqInterface=capturePersonReqInterface
     }
 
     override fun onCreateView(
@@ -30,7 +35,7 @@ class ProviderCompanyFragment() : Fragment() {
         val linearLayoutManager  = LinearLayoutManager(context)
         rv_company_list.layoutManager=linearLayoutManager
         rv_company_list.setHasFixedSize(true)
-        rv_company_list.adapter = ProviderCompanyListAdapter(this.requireContext(),providingCompanyTimeSlots.timeSlots)
+        rv_company_list.adapter = ProviderCompanyListAdapter(this.requireContext(),providingCompanyTimeSlots.timeSlots,capturePersonReqInterface)
         return view
 
     }

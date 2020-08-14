@@ -1,6 +1,8 @@
 package com.cleantool.indiacleantool.appmodules.providercompany
 
 import android.content.Context
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,10 +17,12 @@ class ProviderCompanyListAdapter() : RecyclerView.Adapter<ProviderCompanyListAda
 
     private lateinit var context: Context
     private lateinit var companyTimeSlots:List<TimeSlots>
+    private lateinit var capturePersonReqInterface: CapturePersonReqListner
 
-    constructor(context: Context,companyTimeSlots:List<TimeSlots>) :this(){
+    constructor(context: Context,companyTimeSlots:List<TimeSlots>,capturePersonReqInterface: CapturePersonReqListner) :this(){
         this.context=context
         this.companyTimeSlots=companyTimeSlots
+        this.capturePersonReqInterface=capturePersonReqInterface
     }
 
     override fun onCreateViewHolder(
@@ -54,11 +58,24 @@ class ProviderCompanyListAdapter() : RecyclerView.Adapter<ProviderCompanyListAda
             holder.ed_req_person.visibility=View.GONE
         }
 
+        holder.ed_req_person.addTextChangedListener(object : TextWatcher{
+            override fun afterTextChanged(str: Editable?) {
+                capturePersonReqInterface.onPersonNumAdded(str.toString())
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+        })
+
         holder.itemView.setOnClickListener {
             timeSlot.isSelected=true
             holder.tv_enterReqPerson.visibility=View.VISIBLE
             holder.ed_req_person.visibility=View.VISIBLE
             toggleSelectItem(position)
+            capturePersonReqInterface.openSnackBar()
 
         }
     }

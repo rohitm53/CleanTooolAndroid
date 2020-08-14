@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.appmodules.dashboard.CleanTypeSelectorListner
 import com.cleantool.indiacleantool.common.Constants
-import com.cleantool.indiacleantool.models.services.Services
+import com.cleantool.indiacleantool.models.servicetypes.ServiceType
 import com.cleantool.indiacleantool.utils.recylerviewitemdecoration.SpacesItemDecoration
 
 class DashboardHomeFragment() : Fragment() {
@@ -40,20 +40,20 @@ class DashboardHomeFragment() : Fragment() {
         return view
     }
 
-    private fun loadData() : List<Services> {
+    private fun loadData() : List<ServiceType> {
 
-        val listServices = ArrayList<Services>()
+        val listServices = ArrayList<ServiceType>()
 
-        var services = Services(Constants.House_Hold_Services,R.drawable.house_hold_icon,Constants.House_Hold_Services)
+        var services = ServiceType(Constants.House_Hold_Type,R.drawable.house_hold_icon,Constants.House_Hold_Type)
         listServices.add(services)
 
-        services = Services(Constants.Commercial_Services,R.drawable.commercial_icon,Constants.Commercial_Services)
+        services = ServiceType(Constants.Commercial_Type,R.drawable.commercial_icon,Constants.Commercial_Type)
         listServices.add(services)
 
-        services = Services(Constants.Laundary_Service,R.drawable.laundary_icon,Constants.Laundary_Service)
+        services = ServiceType(Constants.Laundary_Type,R.drawable.laundary_icon,Constants.Laundary_Type)
         listServices.add(services)
 
-        services = Services(Constants.Gardening_Service,R.drawable.garden_icon,Constants.Gardening_Service)
+        services = ServiceType(Constants.Gardening_Type,R.drawable.garden_icon,Constants.Gardening_Type)
         listServices.add(services)
 
         return listServices

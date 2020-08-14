@@ -9,16 +9,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.appmodules.dashboard.CleanTypeSelectorListner
-import com.cleantool.indiacleantool.models.services.Services
+import com.cleantool.indiacleantool.models.servicetypes.ServiceType
 
 
 class HomeServiceGridAdapter() : RecyclerView.Adapter<HomeServiceGridAdapter.HomerServiceViewHolder>() {
 
     lateinit var context: Context
-    lateinit var listServices: List<Services>
+    lateinit var listServices: List<ServiceType>
     private lateinit var cleanTypeSelectorListner: CleanTypeSelectorListner
 
-    constructor(context: Context,listServices:List<Services>,cleanTypeSelectorListner: CleanTypeSelectorListner) : this() {
+    constructor(context: Context, listServices:List<ServiceType>, cleanTypeSelectorListner: CleanTypeSelectorListner) : this() {
         this.context=context
         this.listServices=listServices
         this.cleanTypeSelectorListner=cleanTypeSelectorListner
@@ -39,11 +39,11 @@ class HomeServiceGridAdapter() : RecyclerView.Adapter<HomeServiceGridAdapter.Hom
     }
 
     override fun onBindViewHolder(holder: HomerServiceViewHolder, position: Int) {
-        holder.tv_service_name.text=listServices[position].serviceName
+        holder.tv_service_name.text=listServices[position].name
         holder.iv_image.setImageResource(listServices[position].imageId)
 
         holder.itemView.setOnClickListener{
-            cleanTypeSelectorListner.moveToSelectedCleaningActvity(holder.itemView,listServices[position].serviceCode)
+            cleanTypeSelectorListner.openServicePopup(holder.itemView,listServices[position].code)
         }
 
     }
@@ -53,7 +53,7 @@ class HomeServiceGridAdapter() : RecyclerView.Adapter<HomeServiceGridAdapter.Hom
         val tv_service_name = itemView.findViewById<TextView>(R.id.tv_service_name)
     }
 
-    fun refresh(listServices:List<Services>){
+    fun refresh(listServices:List<ServiceType>){
         this.listServices=listServices
     }
 
