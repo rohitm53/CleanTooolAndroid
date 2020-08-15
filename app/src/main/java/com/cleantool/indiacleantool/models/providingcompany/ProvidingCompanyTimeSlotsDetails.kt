@@ -1,5 +1,6 @@
 package com.cleantool.indiacleantool.models.providingcompany
 
+import java.io.Serializable
 import java.time.LocalDateTime
 
 data class ProvidingCompanyTimeSlotsDetails (

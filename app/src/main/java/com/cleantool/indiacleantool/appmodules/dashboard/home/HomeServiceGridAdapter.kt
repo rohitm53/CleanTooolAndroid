@@ -50,7 +50,7 @@ class HomeServiceGridAdapter() : RecyclerView.Adapter<HomeServiceGridAdapter.Hom
 
     inner class HomerServiceViewHolder(itemView : View)  : RecyclerView.ViewHolder(itemView){
         val iv_image = itemView.findViewById<ImageView>(R.id.iv_image)
-        val tv_service_name = itemView.findViewById<TextView>(R.id.tv_service_name)
+        val tv_service_name = itemView.findViewById<TextView>(R.id.tv_service_name_heading)
     }
 
     fun refresh(listServices:List<ServiceType>){

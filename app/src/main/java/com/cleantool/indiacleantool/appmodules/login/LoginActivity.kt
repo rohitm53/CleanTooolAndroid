@@ -20,5 +20,6 @@ class LoginActivity : BaseActivity() {
     private fun moveToLogin(){
         val intent = Intent(this,DashboardActivity::class.java)
         startActivity(intent)
+        finish()
     }
 }

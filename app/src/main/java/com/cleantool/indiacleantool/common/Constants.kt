@@ -2,9 +2,9 @@ package com.cleantool.indiacleantool.common
 
 class Constants {
     companion object {
-        val House_Hold_Type = "House-hold"
-        val Commercial_Type = "Commercial"
-        val Gardening_Type="Gardening"
-        val Laundary_Type="Laundary"
+        const val House_Hold_Type = "House-hold"
+        const val Commercial_Type = "Commercial"
+        const val Gardening_Type="Gardening"
+        const val Laundary_Type="Laundary"
     }
 }

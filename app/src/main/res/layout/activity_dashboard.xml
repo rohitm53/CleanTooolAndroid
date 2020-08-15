@@ -16,6 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:background="@color/light_gray"
+        app:itemRippleColor="@color/orange"
         app:menu="@menu/menu_bottom_navigation" />
 
     <androidx.viewpager2.widget.ViewPager2

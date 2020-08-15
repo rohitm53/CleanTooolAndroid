@@ -2,9 +2,11 @@ package com.cleantool.indiacleantool.appmodules.dashboard
 
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
+import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.PopupWindow
+import androidx.viewpager2.widget.ViewPager2
 import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.appmodules.commonmodule.BaseActivity
 import com.cleantool.indiacleantool.appmodules.providercompany.ProviderCompanyListActivity
@@ -22,8 +24,42 @@ class DashboardActivity : BaseActivity() , CleanTypeSelectorListner {
         viewpager.setPageTransformer(ZoomOutPageTransformer())
         viewpager.adapter = DashboardPagerAdapter(this,this)
 
-    }
+        viewpager.registerOnPageChangeCallback( object : ViewPager2.OnPageChangeCallback(){
+            override fun onPageSelected(position: Int) {
+                if(position==0){
+                    bottom_navigation_view.selectedItemId = R.id.menu_home
+                }else if(position==1){
+                    bottom_navigation_view.selectedItemId = R.id.menu_search
+                }else if(position==2){
+                    bottom_navigation_view.selectedItemId = R.id.menu_history
+                }else if(position==3){
+                    bottom_navigation_view.selectedItemId = R.id.menu_settings
+                }
+            }
+        })
 
+        bottom_navigation_view.setOnNavigationItemSelectedListener {menuItem: MenuItem ->
+            return@setOnNavigationItemSelectedListener  when(menuItem.itemId){
+                R.id.menu_home -> {
+                    viewpager.setCurrentItem(0)
+                    true
+                }
+                R.id.menu_search -> {
+                    viewpager.setCurrentItem(1)
+                    true
+                }
+                R.id.menu_history -> {
+                    viewpager.setCurrentItem(2)
+                    true
+                }
+                R.id.menu_settings -> {
+                    viewpager.setCurrentItem(3)
+                    true
+                }
+                else -> false
+            }
+        }
+    }
 
     override fun openServicePopup(view: View, cleaning_code: String) {
 

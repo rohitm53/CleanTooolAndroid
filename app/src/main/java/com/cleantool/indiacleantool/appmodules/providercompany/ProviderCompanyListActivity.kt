@@ -1,8 +1,10 @@
 package com.cleantool.indiacleantool.appmodules.providercompany
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Resources
+import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
@@ -11,6 +13,9 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.appmodules.commonmodule.BaseActivity
+import com.cleantool.indiacleantool.appmodules.bookingconfirmation.BookingConfirmationActivity
+import com.cleantool.indiacleantool.appmodules.summary.SummaryActivity
+import com.cleantool.indiacleantool.common.IntentKey
 import com.cleantool.indiacleantool.models.providingcompany.ProvidingCompanyTimeSlotsDetails
 import com.cleantool.indiacleantool.models.providingcompany.TimeSlots
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -19,7 +24,6 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_provider_company_list_activity.*
 import kotlinx.android.synthetic.main.base_activity.*
 import java.time.LocalDateTime
@@ -29,8 +33,7 @@ class ProviderCompanyListActivity : BaseActivity() , OnMapReadyCallback , Captur
 
     private lateinit var listProvidingCompany : List<ProvidingCompanyTimeSlotsDetails>
     private  var googleMap: GoogleMap?=null
-    private lateinit var  snackbar: Snackbar
-
+    private var personReq : Int =0;
 
     override fun initialize() {
         layoutInflater.inflate(R.layout.activity_provider_company_list_activity,ll_body,true)
@@ -45,6 +48,14 @@ class ProviderCompanyListActivity : BaseActivity() , OnMapReadyCallback , Captur
         })
         val mapFragment = supportFragmentManager.findFragmentById(R.id.fr_google_map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+
+        btn_continue.setOnClickListener {
+            val intent = Intent(this,SummaryActivity::class.java)
+            intent.putExtra(IntentKey.Person_Req,personReq)
+            startActivity(intent)
+        }
+
     }
 
     private fun setMapFrameHeight(){
@@ -173,15 +184,13 @@ class ProviderCompanyListActivity : BaseActivity() , OnMapReadyCallback , Captur
             return ProviderCompanyFragment(listprovidingCompanyTimeSlots[position],capturePersonReqListner)
         }
     }
-
-    override fun openSnackBar() {
-        val num = 0
-        snackbar = Snackbar.make(ll_body,"Person req"+num,Snackbar.LENGTH_LONG)
-        snackbar.show()
-    }
-
     override fun onPersonNumAdded(strNum: String) {
-
+        val num = strNum.toInt()
+        if(num>0){
+            btn_continue.visibility=View.VISIBLE
+        }else{
+            btn_continue.visibility=View.VISIBLE
+        }
     }
 
 }

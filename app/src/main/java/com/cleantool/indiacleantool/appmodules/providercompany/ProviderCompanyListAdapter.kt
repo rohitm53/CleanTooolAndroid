@@ -75,8 +75,6 @@ class ProviderCompanyListAdapter() : RecyclerView.Adapter<ProviderCompanyListAda
             holder.tv_enterReqPerson.visibility=View.VISIBLE
             holder.ed_req_person.visibility=View.VISIBLE
             toggleSelectItem(position)
-            capturePersonReqInterface.openSnackBar()
-
         }
     }
 
@@ -88,7 +86,7 @@ class ProviderCompanyListAdapter() : RecyclerView.Adapter<ProviderCompanyListAda
             }
         }
         notifyDataSetChanged()
-
+        capturePersonReqInterface.onPersonNumAdded("0")
     }
 
     fun refresh(companyTimeSlots:List<TimeSlots>){
