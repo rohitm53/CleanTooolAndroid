@@ -1,23 +1,19 @@
 package com.cleantool.indiacleantool.appmodules.dashboard
 
-import android.content.Intent
+import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.MenuItem
-import android.view.View
-import android.widget.ImageView
-import android.widget.PopupWindow
 import androidx.viewpager2.widget.ViewPager2
 import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.appmodules.commonmodule.BaseActivity
-import com.cleantool.indiacleantool.appmodules.providercompany.ProviderCompanyListActivity
 import com.cleantool.indiacleantool.common.Constants
+import com.cleantool.indiacleantool.customdialog.servicedialog.CustomServiceGridDialog
+import com.cleantool.indiacleantool.models.services.Service
 import com.cleantool.indiacleantool.utils.viewpagertransformer.ZoomOutPageTransformer
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.base_activity.*
 
-class DashboardActivity : BaseActivity() , CleanTypeSelectorListner {
-
-    private  var popupWindow: PopupWindow?=null;
+class DashboardActivity : BaseActivity() , ServiceTypeSelectorListner {
 
     override fun initialize() {
         layoutInflater.inflate(R.layout.activity_dashboard,ll_body,true)
@@ -61,74 +57,57 @@ class DashboardActivity : BaseActivity() , CleanTypeSelectorListner {
         }
     }
 
-    override fun openServicePopup(view: View, cleaning_code: String) {
-
-        if(popupWindow!=null && popupWindow?.isShowing!!){
-            popupWindow?.dismiss()
-        }
-        when(cleaning_code){
-            Constants.House_Hold_Type -> showHouseholdServicePopUp(view)
-            Constants.Commercial_Type -> showHouseholdServicePopUp(view)
-        }
+    override fun openServicePopup(serviceType: String) {
+        showHouseholdServicePopUp(serviceType)
     }
 
-    override fun onBackPressed() {
-        if(popupWindow!=null && popupWindow?.isShowing!!){
-            popupWindow?.dismiss()
-        }else{
-            super.onBackPressed()
-        }
+    fun showHouseholdServicePopUp(serviceType: String){
+        val customServiceGridDialog = CustomServiceGridDialog(this,getServiceDataByType(serviceType))
+        customServiceGridDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        customServiceGridDialog.setCancelable(true)
+        customServiceGridDialog.show();
     }
 
-    fun showHouseholdServicePopUp(view: View){
-        popupWindow = PopupWindow(this)
-        popupWindow?.contentView=layoutInflater.inflate(R.layout.service_hover_menu,null)
-        popupWindow?.isOutsideTouchable=true
+    private fun getServiceDataByType(serviceType: String) : List<Service>{
+        val listService = ArrayList<Service>();
 
-        popupWindow?.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
+        if(serviceType.equals(Constants.House_Hold_Type,true)){
+            var service = Service(1,"UT","Utensils",R.drawable.utensils);
+            listService.add(service);
 
-        val iv_utensils = popupWindow?.contentView?.findViewById<ImageView>(R.id.iv_utensils)
-        val iv_mopping_bromming = popupWindow?.contentView?.findViewById<ImageView>(R.id.iv_mopping_bromming)
-        val iv_bathroom = popupWindow?.contentView?.findViewById<ImageView>(R.id.iv_bathroom)
-        val iv_toilet = popupWindow?.contentView?.findViewById<ImageView>(R.id.iv_toilet)
-        val iv_combine = popupWindow?.contentView?.findViewById<ImageView>(R.id.iv_combine)
+            service = Service(1,"MPB","Mopping/Brooming",R.drawable.mopping);
+            listService.add(service);
 
-        iv_utensils?.setOnClickListener {
-            showLoader("Loading...")
-            val intent = Intent(this,ProviderCompanyListActivity::class.java)
-            startActivity(intent)
-            popupWindow?.dismiss()
-            hideLoader()
+            service = Service(1,"BTH","Bathroom",R.drawable.bathroom);
+            listService.add(service);
+
+            service = Service(1,"TLT","Toilet",R.drawable.toilet);
+            listService.add(service);
+
+        }else if(serviceType.equals(Constants.Commercial_Type,true)){
+
+            var service = Service(1,"KT","Kitchen",R.drawable.kitchen);
+            listService.add(service);
+
+            service = Service(1,"OFC","Office",R.drawable.office);
+            listService.add(service);
+
+            service = Service(1,"WRH","Warehouse",R.drawable.warehouse);
+            listService.add(service);
+
+
+        }else if(serviceType.equals(Constants.Laundary_Type)){
+            var service = Service(1,"CLTH","Clothes",R.drawable.clothes);
+            listService.add(service);
+
+            service = Service(1,"DRCLNG","Dry Cleaning",R.drawable.dry_cleaning);
+            listService.add(service);
+
+            service = Service(1,"IRNG","Ironing",R.drawable.ironing);
+            listService.add(service);
         }
-        iv_mopping_bromming?.setOnClickListener {
-            showLoader("Loading...")
-            val intent = Intent(this,ProviderCompanyListActivity::class.java)
-            startActivity(intent)
-            popupWindow?.dismiss()
-            hideLoader()
-        }
-        iv_bathroom?.setOnClickListener {
-            showLoader("Loading...")
-            val intent = Intent(this,ProviderCompanyListActivity::class.java)
-            startActivity(intent)
-            popupWindow?.dismiss()
-            hideLoader()
-        }
-        iv_toilet?.setOnClickListener {
-            showLoader("Loading...")
-            val intent = Intent(this,ProviderCompanyListActivity::class.java)
-            startActivity(intent)
-            popupWindow?.dismiss()
-            hideLoader()
-        }
-        iv_combine?.setOnClickListener {
-            showLoader("Loading...")
-            val intent = Intent(this,ProviderCompanyListActivity::class.java)
-            startActivity(intent)
-            popupWindow?.dismiss()
-            hideLoader()
-        }
-        popupWindow?.showAsDropDown(view)
+
+        return listService;
     }
 
 }

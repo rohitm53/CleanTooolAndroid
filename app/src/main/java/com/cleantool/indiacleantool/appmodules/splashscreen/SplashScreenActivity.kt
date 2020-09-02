@@ -57,6 +57,7 @@ class SplashScreenActivity : BaseActivity() {
     private fun navigateToLogin(){
         showLoader("Initialising...")
         Handler().postDelayed({
+            hideLoader()
             val intent = Intent(this, WelcomeScreenActivity::class.java)
             startActivity(intent)
             finish()

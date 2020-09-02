@@ -66,4 +66,7 @@
     <!-- Service Company List Activity-->
     <string name="search">Search</string>
 
+    <!--CustomServiceGridDialog-->
+    <string name="avail_services">Available Cleaning Services</string>
+
 </resources>

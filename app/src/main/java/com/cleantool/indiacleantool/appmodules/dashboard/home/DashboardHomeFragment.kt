@@ -8,17 +8,17 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cleantool.indiacleantool.R
-import com.cleantool.indiacleantool.appmodules.dashboard.CleanTypeSelectorListner
+import com.cleantool.indiacleantool.appmodules.dashboard.ServiceTypeSelectorListner
 import com.cleantool.indiacleantool.common.Constants
 import com.cleantool.indiacleantool.models.servicetypes.ServiceType
 import com.cleantool.indiacleantool.utils.recylerviewitemdecoration.SpacesItemDecoration
 
 class DashboardHomeFragment() : Fragment() {
 
-    private lateinit var cleanTypeSelectorListner: CleanTypeSelectorListner
+    private lateinit var serviceTypeSelectorListner: ServiceTypeSelectorListner
 
-    constructor(cleanTypeSelectorListner: CleanTypeSelectorListner) : this() {
-        this.cleanTypeSelectorListner=cleanTypeSelectorListner
+    constructor(serviceTypeSelectorListner: ServiceTypeSelectorListner) : this() {
+        this.serviceTypeSelectorListner=serviceTypeSelectorListner
     }
 
     override fun onCreateView(
@@ -33,29 +33,29 @@ class DashboardHomeFragment() : Fragment() {
         val gridLayoutManager = GridLayoutManager(context,2)
         rv_service.layoutManager=gridLayoutManager
         rv_service.setHasFixedSize(true)
-        rv_service.adapter = HomeServiceGridAdapter(this.requireActivity(),loadData(),cleanTypeSelectorListner)
+        rv_service.adapter = HomeServiceTypeGridAdapter(this.requireActivity(),getServiceTypes(),serviceTypeSelectorListner)
 
         rv_service.addItemDecoration(SpacesItemDecoration(10))
 
         return view
     }
 
-    private fun loadData() : List<ServiceType> {
+    private fun getServiceTypes() : List<ServiceType> {
 
-        val listServices = ArrayList<ServiceType>()
+        val listServicesTypes = ArrayList<ServiceType>()
 
-        var services = ServiceType(Constants.House_Hold_Type,R.drawable.house_hold_icon,Constants.House_Hold_Type)
-        listServices.add(services)
+        var serviceType = ServiceType(Constants.House_Hold_Type,R.drawable.house_hold_icon,Constants.House_Hold_Type)
+        listServicesTypes.add(serviceType)
 
-        services = ServiceType(Constants.Commercial_Type,R.drawable.commercial_icon,Constants.Commercial_Type)
-        listServices.add(services)
+        serviceType = ServiceType(Constants.Commercial_Type,R.drawable.commercial_icon,Constants.Commercial_Type)
+        listServicesTypes.add(serviceType)
 
-        services = ServiceType(Constants.Laundary_Type,R.drawable.laundary_icon,Constants.Laundary_Type)
-        listServices.add(services)
+        serviceType = ServiceType(Constants.Laundary_Type,R.drawable.laundary_icon,Constants.Laundary_Type)
+        listServicesTypes.add(serviceType)
 
-        services = ServiceType(Constants.Gardening_Type,R.drawable.garden_icon,Constants.Gardening_Type)
-        listServices.add(services)
+//        serviceType = ServiceType(Constants.Gardening_Type,R.drawable.garden_icon,Constants.Gardening_Type)
+//        listServicesTypes.add(serviceType)
 
-        return listServices
+        return listServicesTypes
     }
 }

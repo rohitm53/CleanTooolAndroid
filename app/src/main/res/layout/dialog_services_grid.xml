@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_service_grid_bg"
+    android:padding="@dimen/margin_10"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/avail_services"
+        android:gravity="center"
+        android:textSize="@dimen/text_20sp"
+        android:fontFamily="@font/worksans_regular"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:paddingLeft="@dimen/margin_30"
+        android:paddingRight="@dimen/margin_30"
+        android:paddingBottom="@dimen/margin_30"
+        android:id="@+id/rv_services"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        />
+
+</LinearLayout>

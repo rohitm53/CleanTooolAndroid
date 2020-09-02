@@ -10,11 +10,11 @@ import com.cleantool.indiacleantool.appmodules.dashboard.settings.DashboardSetti
 
 class DashboardPagerAdapter : FragmentStateAdapter {
 
-    private var cleanTypeSelectorListner: CleanTypeSelectorListner
+    private var serviceTypeSelectorListner: ServiceTypeSelectorListner
     private val NUM_PAGES=4
 
-    constructor(fragmentActivity: FragmentActivity,cleanTypeSelectorListner: CleanTypeSelectorListner):super(fragmentActivity) {
-        this.cleanTypeSelectorListner=cleanTypeSelectorListner
+    constructor(fragmentActivity: FragmentActivity, serviceTypeSelectorListner: ServiceTypeSelectorListner):super(fragmentActivity) {
+        this.serviceTypeSelectorListner=serviceTypeSelectorListner
     }
 
     override fun getItemCount(): Int {
@@ -23,7 +23,7 @@ class DashboardPagerAdapter : FragmentStateAdapter {
 
     override fun createFragment(position: Int): Fragment {
         if(position==0){
-            return DashboardHomeFragment(cleanTypeSelectorListner)
+            return DashboardHomeFragment(serviceTypeSelectorListner)
         }else if(position==1){
             return DashboardSearchFragment()
         }else if(position==2){

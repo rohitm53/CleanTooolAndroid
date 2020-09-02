@@ -11,7 +11,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/tv_service_name_heading"
+            android:id="@+id/tv_service_type_name_heading"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -40,7 +40,7 @@
             android:textSize="@dimen/text_20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_service_name_heading" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_service_type_name_heading" />
 
         <TextView
             android:id="@+id/textView7"

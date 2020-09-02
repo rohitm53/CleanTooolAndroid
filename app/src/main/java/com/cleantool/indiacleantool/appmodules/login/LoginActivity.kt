@@ -11,7 +11,6 @@ class LoginActivity : BaseActivity() {
     override fun initialize() {
         layoutInflater.inflate(R.layout.activity_login,ll_body,true)
         hideToolbar()
-
         btn_signin.setOnClickListener {
             moveToLogin()
         }
