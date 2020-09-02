@@ -8,15 +8,19 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.cleantool.indiacleantool.R
+import com.cleantool.indiacleantool.appmodules.dashboard.settings.ServiceSelectorListner
 import com.cleantool.indiacleantool.models.services.Service
 
 class CustomServiceGridAdapter() : RecyclerView.Adapter<CustomServiceGridAdapter.CustomServiceGridViewHolder>() {
 
     private lateinit var context: Context
     private lateinit var listService:List<Service>
-    constructor(context: Context, listService:List<Service>)  : this(){
+    private lateinit var serviceSelectorListner: ServiceSelectorListner
+
+    constructor(context: Context, listService:List<Service>,serviceSelectorListner: ServiceSelectorListner)  : this(){
         this.context=context;
         this.listService=listService
+        this.serviceSelectorListner=serviceSelectorListner
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int ): CustomServiceGridViewHolder {
@@ -27,11 +31,18 @@ class CustomServiceGridAdapter() : RecyclerView.Adapter<CustomServiceGridAdapter
     override fun onBindViewHolder(viewHolder: CustomServiceGridViewHolder, position: Int) {
         val service = listService[position]
         viewHolder.tv_service_name_heading.text = service.serviceName
-            viewHolder.iv_image.setImageResource(service.imageId)
+        viewHolder.iv_image.setImageResource(service.imageId)
+
+        viewHolder.itemView.setOnClickListener {
+            serviceSelectorListner.moveToProvidingCompanyList(service.serviceCode)
+        }
 
     }
     override fun getItemCount(): Int {
-        return listService.size
+        if(this::listService.isInitialized &&  listService.size>0){
+            return listService.size
+        }
+        return 0
     }
 
     class CustomServiceGridViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){

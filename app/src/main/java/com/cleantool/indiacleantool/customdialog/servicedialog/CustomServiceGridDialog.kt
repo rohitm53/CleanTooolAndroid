@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cleantool.indiacleantool.R
+import com.cleantool.indiacleantool.appmodules.dashboard.settings.ServiceSelectorListner
 import com.cleantool.indiacleantool.customdialog.CustomServiceGridAdapter
 import com.cleantool.indiacleantool.models.services.Service
 import com.cleantool.indiacleantool.utils.recylerviewitemdecoration.SpacesItemDecoration
@@ -21,10 +22,12 @@ class CustomServiceGridDialog : Dialog {
     private var  mContext : Context
     private var listService:List<Service>;
     private lateinit var rv_services : RecyclerView;
+    private var serviceSelectorListner: ServiceSelectorListner;
 
-    constructor(mContext : Context,listService:List<Service>) : super(mContext){
+    constructor(mContext : Context,listService:List<Service>,serviceSelectorListner: ServiceSelectorListner) : super(mContext){
         this.mContext=mContext
         this.listService=listService;
+        this.serviceSelectorListner=serviceSelectorListner;
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +36,7 @@ class CustomServiceGridDialog : Dialog {
         setContentView(R.layout.dialog_services_grid);
         rv_services = findViewById(R.id.rv_services);
 
-        val adapter = CustomServiceGridAdapter(mContext,ArrayList<Service>());
+        val adapter = CustomServiceGridAdapter(mContext,ArrayList(),serviceSelectorListner);
         val gridLayoutManager  = GridLayoutManager(mContext,2)
         rv_services.setHasFixedSize(true)
         rv_services.adapter = adapter
@@ -41,7 +44,6 @@ class CustomServiceGridDialog : Dialog {
         rv_services.layoutManager=gridLayoutManager
         adapter.refresh(listService);
     }
-
 
 
 

@@ -1,12 +1,17 @@
 package com.cleantool.indiacleantool.appmodules.dashboard
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.Handler
 import android.view.MenuItem
 import androidx.viewpager2.widget.ViewPager2
 import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.appmodules.commonmodule.BaseActivity
+import com.cleantool.indiacleantool.appmodules.dashboard.settings.ServiceSelectorListner
+import com.cleantool.indiacleantool.appmodules.providercompany.ProviderCompanyListActivity
 import com.cleantool.indiacleantool.common.Constants
+import com.cleantool.indiacleantool.common.IntentKey
 import com.cleantool.indiacleantool.customdialog.servicedialog.CustomServiceGridDialog
 import com.cleantool.indiacleantool.models.services.Service
 import com.cleantool.indiacleantool.utils.viewpagertransformer.ZoomOutPageTransformer
@@ -14,6 +19,9 @@ import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.base_activity.*
 
 class DashboardActivity : BaseActivity() , ServiceTypeSelectorListner {
+
+    private lateinit var customServiceGridDialog:CustomServiceGridDialog;
+
 
     override fun initialize() {
         layoutInflater.inflate(R.layout.activity_dashboard,ll_body,true)
@@ -62,7 +70,23 @@ class DashboardActivity : BaseActivity() , ServiceTypeSelectorListner {
     }
 
     fun showHouseholdServicePopUp(serviceType: String){
-        val customServiceGridDialog = CustomServiceGridDialog(this,getServiceDataByType(serviceType))
+
+        if(this::customServiceGridDialog.isInitialized && customServiceGridDialog.isShowing){
+            customServiceGridDialog.dismiss()
+        }
+
+        customServiceGridDialog = CustomServiceGridDialog(this,getServiceDataByType(serviceType),
+            object:ServiceSelectorListner{
+                    override fun moveToProvidingCompanyList(serviceCode: String) {
+
+                        this@DashboardActivity.customServiceGridDialog.dismiss()
+                        this@DashboardActivity.showLoader("Loading...")
+                        Handler().postDelayed({
+                            this@DashboardActivity.moveToProviderCompanylist(serviceCode)
+                        },1000)
+                    }
+
+        })
         customServiceGridDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         customServiceGridDialog.setCancelable(true)
         customServiceGridDialog.show();
@@ -108,6 +132,12 @@ class DashboardActivity : BaseActivity() , ServiceTypeSelectorListner {
         }
 
         return listService;
+    }
+
+    fun moveToProviderCompanylist(serviceCode: String) {
+        val intent = Intent(this,ProviderCompanyListActivity::class.java)
+        intent.putExtra(IntentKey.Service_Code,serviceCode)
+        startActivity(intent)
     }
 
 }
