@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.models.providingcompany.TimeSlots
+import com.cleantool.indiacleantool.utils.dateutils.CalendarUtils
 import java.time.format.DateTimeFormatter
 
 class ProviderCompanyListAdapter() : RecyclerView.Adapter<ProviderCompanyListAdapter.ProviderCompanyListViewHolder>() {
@@ -46,8 +47,8 @@ class ProviderCompanyListAdapter() : RecyclerView.Adapter<ProviderCompanyListAda
         val timeSlot = companyTimeSlots[position]
 
         holder.tv_sno.text=(position+1).toString()
-        holder.tv_starttime.text=timeSlot.startTime?.format(DateTimeFormatter.ofPattern("HH:mm"))
-        holder.tv_endTime.text=timeSlot.endTime?.format(DateTimeFormatter.ofPattern("HH:mm"))
+        holder.tv_starttime.text=timeSlot.startTime?.format(CalendarUtils.formatTimeInStandFormat())
+        holder.tv_endTime.text=timeSlot.endTime?.format(CalendarUtils.formatTimeInStandFormat())
         holder.tv_availablePersons.text=timeSlot.availablePersons.toString()
 
         if(timeSlot.isSelected){

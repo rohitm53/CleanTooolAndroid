@@ -82,6 +82,7 @@ class DashboardActivity : BaseActivity() , ServiceTypeSelectorListner {
                         this@DashboardActivity.customServiceGridDialog.dismiss()
                         this@DashboardActivity.showLoader("Loading...")
                         Handler().postDelayed({
+                            this@DashboardActivity.hideLoader()
                             this@DashboardActivity.moveToProviderCompanylist(serviceCode)
                         },1000)
                     }
