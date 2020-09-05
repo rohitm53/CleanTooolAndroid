@@ -32,7 +32,7 @@ class LoginActivity : BaseActivity() {
             moveToSignUp()
         }
 
-        ServiceIndiaApplication.getApplicationComponent().inject(this)
+        (application as ServiceIndiaApplication).getApplicationComponent().inject(this)
 
         car.start()
         car.engine.start()

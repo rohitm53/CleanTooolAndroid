@@ -2,6 +2,7 @@ package com.cleantool.indiacleantool.dependencyinjection
 
 import android.util.Log
 import javax.inject.Inject
+import javax.inject.Named
 
 class PetrolEngine : Engine {
 
@@ -9,7 +10,7 @@ class PetrolEngine : Engine {
     var engineCapacity:Int
 
     @Inject
-    constructor(powerCapacity : Int,engineCapacity:Int){
+    constructor(@Named("powerCapacity")powerCapacity : Int, @Named("engineCapacity")engineCapacity:Int){
         this.powerCapacity=powerCapacity
         this.engineCapacity=engineCapacity
     }

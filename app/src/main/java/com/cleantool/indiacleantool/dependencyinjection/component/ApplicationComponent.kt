@@ -7,6 +7,7 @@ import com.cleantool.indiacleantool.dependencyinjection.modules.TestApplicationM
 import com.cleantool.indiacleantool.dependencyinjection.modules.WheelsModule
 import dagger.BindsInstance
 import dagger.Component
+import javax.inject.Named
 
 @Component(modules = arrayOf(ApplicationModules::class,WheelsModule::class))
 interface ApplicationComponent {
@@ -19,7 +20,10 @@ interface ApplicationComponent {
     interface Builder {
 
         @BindsInstance
-        fun provideProvidePowerCapacity(powerCapacity : Int) : Builder
+        fun provideProvidePowerCapacity(@Named("powerCapacity")powerCapacity : Int) : Builder
+
+        @BindsInstance
+        fun provideEngineCapacity(@Named("engineCapacity")engineCapacity : Int) : Builder
 
         fun build() : ApplicationComponent
 
