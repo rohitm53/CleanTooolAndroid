@@ -14,7 +14,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.cleantool.indiacleantool.R
-import kotlinx.android.synthetic.main.base_activity.*
 import kotlinx.android.synthetic.main.toolbar_common_header.*
 
 abstract class BaseActivity : AppCompatActivity() {

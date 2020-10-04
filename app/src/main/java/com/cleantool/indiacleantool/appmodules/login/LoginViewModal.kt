@@ -1,5 +1,6 @@
 package com.cleantool.indiacleantool.appmodules.login
 
+import android.util.Log.d
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,13 +11,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+
 class LoginViewModal : ViewModel() {
 
     init {
         ServiceIndiaApplication.getApplicationComponent().inject(this)
     }
 
-    @Inject lateinit var loginRepository: LoginRepository
+    @Inject
+    lateinit var loginRepository: LoginRepository
 
     companion object{
         enum class Status {
@@ -32,6 +35,7 @@ class LoginViewModal : ViewModel() {
         val loginRequest = LoginRequest(username,password)
         viewModelScope.launch(Dispatchers.Default) {
             val loginResponse = loginRepository.authenticatUser(loginRequest)
+            d("rohitmclean","Login Response : "+loginResponse)
             if(!loginResponse.jwt.isEmpty()){
                 liveDataStatus.postValue(Status.SUCCESS)
             }else{

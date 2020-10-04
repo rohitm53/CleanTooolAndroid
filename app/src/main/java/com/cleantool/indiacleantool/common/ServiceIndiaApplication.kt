@@ -12,7 +12,7 @@ class ServiceIndiaApplication : Application() {
         private lateinit var applicationComponent: ApplicationComponent
         private lateinit var serviceIndiaApplication: ServiceIndiaApplication
 
-        fun getApplicationComponent():ApplicationComponent {
+        fun getApplicationComponent(): ApplicationComponent {
             return applicationComponent
         }
 

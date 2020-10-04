@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.cleantool.indiacleantool"
-        minSdkVersion 26
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -31,11 +31,8 @@ android {
         jvmTarget = '1.8'
     }
 }
-
-def room_version = "2.2.5"
 def lifecycle_version = "2.2.0"
 def daggerVersion='2.20'
-
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])

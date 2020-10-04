@@ -21,7 +21,7 @@ class LoginActivity : BaseActivity() {
 
         btn_signin.setOnClickListener {
             showLoader("Logging in...")
-            loginViewModal.authenticateUser("rohit","password")
+            loginViewModal.authenticateUser("rohit01","password")
             moveToDashboard()
         }
         tv_not_you.setOnClickListener {
