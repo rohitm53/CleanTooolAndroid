@@ -3,23 +3,33 @@ package com.cleantool.indiacleantool.common
 import android.app.Application
 import com.cleantool.indiacleantool.dependencyinjection.component.ApplicationComponent
 import com.cleantool.indiacleantool.dependencyinjection.component.DaggerApplicationComponent
+import com.cleantool.indiacleantool.dependencyinjection.modules.ApplicationModules
 
 class ServiceIndiaApplication : Application() {
 
-    private lateinit var applicationComponent: ApplicationComponent
+    companion object {
 
-    override fun onCreate() {
-        super.onCreate()
+        private lateinit var applicationComponent: ApplicationComponent
+        private lateinit var serviceIndiaApplication: ServiceIndiaApplication
 
-        applicationComponent = DaggerApplicationComponent.builder()
-                              .provideProvidePowerCapacity(100)
-                              .provideEngineCapacity(500)
-                              .build()
+        fun getApplicationComponent():ApplicationComponent {
+            return applicationComponent
+        }
+
+        fun getServiceIndiaApplication():ServiceIndiaApplication {
+            return serviceIndiaApplication
+        }
     }
 
 
-    fun getApplicationComponent():ApplicationComponent {
-        return applicationComponent
+    override fun onCreate() {
+        super.onCreate()
+        serviceIndiaApplication=this
+
+        applicationComponent = DaggerApplicationComponent.builder()
+                              .applicationModules(ApplicationModules(serviceIndiaApplication))
+                              .build()
+
     }
 
 

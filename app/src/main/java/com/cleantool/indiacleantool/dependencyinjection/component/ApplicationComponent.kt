@@ -1,31 +1,17 @@
 package com.cleantool.indiacleantool.dependencyinjection.component
 
-import com.cleantool.indiacleantool.appmodules.login.LoginActivity
-import com.cleantool.indiacleantool.dependencyinjection.Car
+import com.cleantool.indiacleantool.appmodules.login.LoginViewModal
+import com.cleantool.indiacleantool.appmodules.login.repository.LoginRepository
+import com.cleantool.indiacleantool.appmodules.login.service.LoginService
 import com.cleantool.indiacleantool.dependencyinjection.modules.ApplicationModules
-import com.cleantool.indiacleantool.dependencyinjection.modules.TestApplicationModules
-import com.cleantool.indiacleantool.dependencyinjection.modules.WheelsModule
-import dagger.BindsInstance
 import dagger.Component
-import javax.inject.Named
+import javax.inject.Singleton
 
-@Component(modules = arrayOf(ApplicationModules::class,WheelsModule::class))
+@Singleton
+@Component(modules = [ApplicationModules::class])
 interface ApplicationComponent {
 
-    fun getCar() : Car
+    fun inject(loginRepository: LoginRepository)
+    fun inject(loginViewModal: LoginViewModal)
 
-    fun inject(loginActivity: LoginActivity)
-
-    @Component.Builder
-    interface Builder {
-
-        @BindsInstance
-        fun provideProvidePowerCapacity(@Named("powerCapacity")powerCapacity : Int) : Builder
-
-        @BindsInstance
-        fun provideEngineCapacity(@Named("engineCapacity")engineCapacity : Int) : Builder
-
-        fun build() : ApplicationComponent
-
-    }
 }

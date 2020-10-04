@@ -1,17 +1,44 @@
 package com.cleantool.indiacleantool.dependencyinjection.modules
 
-import com.cleantool.indiacleantool.dependencyinjection.Engine
-import com.cleantool.indiacleantool.dependencyinjection.PetrolEngine
-import dagger.Binds
+import com.cleantool.indiacleantool.appmodules.login.repository.LoginRepository
+import com.cleantool.indiacleantool.appmodules.login.service.LoginService
+import com.cleantool.indiacleantool.common.ServiceIndiaApplication
+import com.cleantool.indiacleantool.common.ServiceUrls
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 @Module
- class ApplicationModules {
+ class ApplicationModules(private var serviceIndiaApplication: ServiceIndiaApplication) {
+
+    @Singleton
+    @Provides
+    fun provideRetrofit(gson: Gson): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(ServiceUrls.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build()
+    }
 
     @Provides
-    fun providesPetrolEngin(petrolEngine: PetrolEngine) : Engine{
-        return petrolEngine
+    fun provideGson() : Gson {
+        return GsonBuilder().create()
+    }
+
+    @Singleton
+    @Provides
+    fun provideLoginService(retrofit: Retrofit): LoginService {
+        return retrofit.create(LoginService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideLoginRepository(): LoginRepository {
+        return  LoginRepository()
     }
 
 }
