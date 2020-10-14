@@ -8,14 +8,13 @@ import com.cleantool.indiacleantool.appmodules.dashboard.home.DashboardHomeFragm
 import com.cleantool.indiacleantool.appmodules.dashboard.search.DashboardSearchFragment
 import com.cleantool.indiacleantool.appmodules.dashboard.settings.DashboardSettingsFragment
 
-class DashboardPagerAdapter : FragmentStateAdapter {
-
+class DashboardPagerAdapter(
+    fragmentActivity: FragmentActivity,
     private var serviceTypeSelectorListner: ServiceTypeSelectorListner
+) : FragmentStateAdapter(fragmentActivity) {
+
     private val NUM_PAGES=4
 
-    constructor(fragmentActivity: FragmentActivity, serviceTypeSelectorListner: ServiceTypeSelectorListner):super(fragmentActivity) {
-        this.serviceTypeSelectorListner=serviceTypeSelectorListner
-    }
 
     override fun getItemCount(): Int {
         return NUM_PAGES

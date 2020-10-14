@@ -1,12 +1,14 @@
 package com.cleantool.indiacleantool.appmodules.login
 
 import android.content.Intent
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.appmodules.commonmodule.BaseActivity
 import com.cleantool.indiacleantool.appmodules.dashboard.DashboardActivity
 import com.cleantool.indiacleantool.appmodules.signup.SignUpActivity
-import kotlinx.android.synthetic.main.activity_login.*
+import com.cleantool.indiacleantool.databinding.ActivityLoginBinding
 import kotlinx.android.synthetic.main.base_activity.*
 
 class LoginActivity : BaseActivity() {
@@ -14,30 +16,43 @@ class LoginActivity : BaseActivity() {
     private lateinit var loginViewModal: LoginViewModal
 
     override fun initialize() {
-        layoutInflater.inflate(R.layout.activity_login,ll_body,true)
+
         hideToolbar()
-
+        val activityLoginBinding = DataBindingUtil.inflate<ActivityLoginBinding>(
+            layoutInflater,
+            R.layout.activity_login,
+            ll_body,
+            true
+        )
         loginViewModal = ViewModelProvider(this).get(LoginViewModal::class.java)
-
-        btn_signin.setOnClickListener {
-            showLoader("Logging in...")
-            loginViewModal.authenticateUser("rohit01","password")
-            moveToDashboard()
-        }
-        tv_not_you.setOnClickListener {
-            moveToSignUp()
+        activityLoginBinding.apply {
+            viewmodal=loginViewModal
         }
 
-        loginViewModal.liveDataStatus.observe(this,{
-            when(it){
-                LoginViewModal.Companion.Status.SUCCESS -> {
+        loginViewModal.liveDataStatus.observe<LoginViewModal.LoginStatus>(this, { loginStatus ->
+            when (loginStatus.status) {
+                LoginViewModal.SHOW_LOADER -> {
+                    showLoader(loginStatus.data.toString())
+                }
+
+                LoginViewModal.HIDE_LOADER -> {
+                    hideLoader()
+                }
+
+                LoginViewModal.SUCCESS -> {
                     hideLoader()
                     moveToDashboard()
                 }
-                LoginViewModal.Companion.Status.ERROR -> {
+
+                LoginViewModal.ERROR -> {
                     hideLoader()
                     showToast("Error")
                 }
+
+                LoginViewModal.NAVIGATE_TO_SIGNUP -> {
+                    moveToSignUp()
+                }
+                else -> showToast("Error")
             }
         })
 

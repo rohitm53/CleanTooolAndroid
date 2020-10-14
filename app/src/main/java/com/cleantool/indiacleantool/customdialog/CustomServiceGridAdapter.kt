@@ -1,6 +1,5 @@
 package com.cleantool.indiacleantool.customdialog
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,20 +10,13 @@ import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.appmodules.dashboard.settings.ServiceSelectorListner
 import com.cleantool.indiacleantool.models.services.Service
 
-class CustomServiceGridAdapter() : RecyclerView.Adapter<CustomServiceGridAdapter.CustomServiceGridViewHolder>() {
-
-    private lateinit var context: Context
-    private lateinit var listService:List<Service>
-    private lateinit var serviceSelectorListner: ServiceSelectorListner
-
-    constructor(context: Context, listService:List<Service>,serviceSelectorListner: ServiceSelectorListner)  : this(){
-        this.context=context;
-        this.listService=listService
-        this.serviceSelectorListner=serviceSelectorListner
-    }
+class CustomServiceGridAdapter(
+    private  var listService:List<Service>,
+    private var serviceSelectorListner: ServiceSelectorListner
+) : RecyclerView.Adapter<CustomServiceGridAdapter.CustomServiceGridViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int ): CustomServiceGridViewHolder {
-        val convertView = LayoutInflater.from(context).inflate(R.layout.adapter_dialog_service_cell,parent,false)
+        val convertView = LayoutInflater.from(parent.context).inflate(R.layout.adapter_dialog_service_cell,parent,false)
         return CustomServiceGridViewHolder(convertView)
     }
 
@@ -39,7 +31,7 @@ class CustomServiceGridAdapter() : RecyclerView.Adapter<CustomServiceGridAdapter
 
     }
     override fun getItemCount(): Int {
-        if(this::listService.isInitialized &&  listService.size>0){
+        if(listService.size>0){
             return listService.size
         }
         return 0

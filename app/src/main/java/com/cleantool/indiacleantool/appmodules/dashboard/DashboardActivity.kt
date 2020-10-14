@@ -5,28 +5,34 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Handler
 import android.view.MenuItem
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.appmodules.commonmodule.BaseActivity
 import com.cleantool.indiacleantool.appmodules.dashboard.settings.ServiceSelectorListner
-import com.cleantool.indiacleantool.appmodules.providercompany.ProviderCompanyListActivity
-import com.cleantool.indiacleantool.common.Constants
+import com.cleantool.indiacleantool.appmodules.providercompany.ServiceProviderCompanyActivity
 import com.cleantool.indiacleantool.common.IntentKey
 import com.cleantool.indiacleantool.customdialog.servicedialog.CustomServiceGridDialog
-import com.cleantool.indiacleantool.models.services.Service
 import com.cleantool.indiacleantool.utils.viewpagertransformer.ZoomOutPageTransformer
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.base_activity.*
 
 class DashboardActivity : BaseActivity() , ServiceTypeSelectorListner {
 
-    private lateinit var customServiceGridDialog:CustomServiceGridDialog;
+    private lateinit var customServiceGridDialog:CustomServiceGridDialog
+
+    private lateinit var viewModal: DashboardActivityViewModal
 
 
     override fun initialize() {
+
         layoutInflater.inflate(R.layout.activity_dashboard,ll_body,true)
+        viewModal = ViewModelProvider(this).get(DashboardActivityViewModal::class.java)
+
+
         viewpager.setPageTransformer(ZoomOutPageTransformer())
         viewpager.adapter = DashboardPagerAdapter(this,this)
+
 
         viewpager.registerOnPageChangeCallback( object : ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {
@@ -66,77 +72,40 @@ class DashboardActivity : BaseActivity() , ServiceTypeSelectorListner {
     }
 
     override fun openServicePopup(serviceType: String) {
-        showHouseholdServicePopUp(serviceType)
+        showServiceByTypePopup(serviceType)
     }
 
-    fun showHouseholdServicePopUp(serviceType: String){
+    fun showServiceByTypePopup(serviceType: String){
 
         if(this::customServiceGridDialog.isInitialized && customServiceGridDialog.isShowing){
             customServiceGridDialog.dismiss()
         }
 
-        customServiceGridDialog = CustomServiceGridDialog(this,getServiceDataByType(serviceType),
-            object:ServiceSelectorListner{
-                    override fun moveToProvidingCompanyList(serviceCode: String) {
+        customServiceGridDialog = CustomServiceGridDialog(
+            this,
+            viewModal.hmServices.get(serviceType)!!,
+            object : ServiceSelectorListner {
+                override fun moveToProvidingCompanyList(serviceCode: String) {
 
-                        this@DashboardActivity.customServiceGridDialog.dismiss()
-                        this@DashboardActivity.showLoader("Loading...")
-                        Handler().postDelayed({
-                            this@DashboardActivity.hideLoader()
-                            this@DashboardActivity.moveToProviderCompanylist(serviceCode)
-                        },1000)
-                    }
+                    this@DashboardActivity.customServiceGridDialog.dismiss()
+                    this@DashboardActivity.showLoader("Loading...")
+                    Handler().postDelayed({
+                        this@DashboardActivity.hideLoader()
+                        this@DashboardActivity.moveToProviderCompanylist(serviceCode)
+                    }, 1000)
+                }
 
-        })
+            })
+
         customServiceGridDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         customServiceGridDialog.setCancelable(true)
         customServiceGridDialog.show();
     }
 
-    private fun getServiceDataByType(serviceType: String) : List<Service>{
-        val listService = ArrayList<Service>();
 
-        if(serviceType.equals(Constants.House_Hold_Type,true)){
-            var service = Service(1,"UT","Utensils",R.drawable.utensils);
-            listService.add(service);
-
-            service = Service(1,"MPB","Mopping/Brooming",R.drawable.mopping);
-            listService.add(service);
-
-            service = Service(1,"BTH","Bathroom",R.drawable.bathroom);
-            listService.add(service);
-
-            service = Service(1,"TLT","Toilet",R.drawable.toilet);
-            listService.add(service);
-
-        }else if(serviceType.equals(Constants.Commercial_Type,true)){
-
-            var service = Service(1,"KT","Kitchen",R.drawable.kitchen);
-            listService.add(service);
-
-            service = Service(1,"OFC","Office",R.drawable.office);
-            listService.add(service);
-
-            service = Service(1,"WRH","Warehouse",R.drawable.warehouse);
-            listService.add(service);
-
-
-        }else if(serviceType.equals(Constants.Laundary_Type)){
-            var service = Service(1,"CLTH","Clothes",R.drawable.clothes);
-            listService.add(service);
-
-            service = Service(1,"DRCLNG","Dry Cleaning",R.drawable.dry_cleaning);
-            listService.add(service);
-
-            service = Service(1,"IRNG","Ironing",R.drawable.ironing);
-            listService.add(service);
-        }
-
-        return listService;
-    }
 
     fun moveToProviderCompanylist(serviceCode: String) {
-        val intent = Intent(this,ProviderCompanyListActivity::class.java)
+        val intent = Intent(this,ServiceProviderCompanyActivity::class.java)
         intent.putExtra(IntentKey.Service_Code,serviceCode)
         startActivity(intent)
     }

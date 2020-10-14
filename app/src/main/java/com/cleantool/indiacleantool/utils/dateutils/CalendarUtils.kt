@@ -9,7 +9,7 @@ class CalendarUtils {
 
     companion object {
 
-        const val STANDARD_TIME_FORMAT = "HH:mm"
+        const val STANDARD_TIME_FORMAT = "hh:mm"
         const val STANDARD_DATE_FORMAT="yyyy-MM-dd"
 
         fun formatTimeInStandFormat(): DateTimeFormatter? {
@@ -17,12 +17,25 @@ class CalendarUtils {
         }
 
         fun getCurrentDateInStandFormat(): String? {
-            return LocalDate.now().format(DateTimeFormatter.ofPattern(STANDARD_DATE_FORMAT, Locale.ENGLISH))
+            return LocalDate.now().format(
+                DateTimeFormatter.ofPattern(
+                    STANDARD_DATE_FORMAT,
+                    Locale.ENGLISH
+                )
+            )
         }
 
-        fun getDateInStandFormat(date:String): String? {
+        fun getTimeInStandFormat(time: String) : String? {
+
+            val simpleDateFormat = SimpleDateFormat("dd-MM-yyyy hh:mm:ss")
+            val date = simpleDateFormat.parse(time)
+            val timeFormat = SimpleDateFormat("hh:mm")
+            return timeFormat.format(date)
+        }
+
+        fun getDateInStandFormat(date: String): String? {
             val formatter = DateTimeFormatter.ofPattern(STANDARD_DATE_FORMAT)
-            return LocalDate.parse(date,formatter).toString()
+            return LocalDate.parse(date, formatter).toString()
         }
 
     }

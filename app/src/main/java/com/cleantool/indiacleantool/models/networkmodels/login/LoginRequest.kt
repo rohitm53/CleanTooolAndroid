@@ -1,7 +1,6 @@
 package com.cleantool.indiacleantool.models.networkmodels.login
 
 
-data class LoginRequest(
-    val username: String,
-    val password: String
-)
+data class LoginRequest( var username: String, var password: String){
+
+}

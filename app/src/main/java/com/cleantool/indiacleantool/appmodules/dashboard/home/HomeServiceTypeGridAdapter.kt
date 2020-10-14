@@ -1,6 +1,5 @@
 package com.cleantool.indiacleantool.appmodules.dashboard.home
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,21 +11,13 @@ import com.cleantool.indiacleantool.appmodules.dashboard.ServiceTypeSelectorList
 import com.cleantool.indiacleantool.models.servicetypes.ServiceType
 
 
-class HomeServiceTypeGridAdapter() : RecyclerView.Adapter<HomeServiceTypeGridAdapter.HomerServiceTypeViewHolder>() {
-
-    lateinit var context: Context
-    lateinit var listServicesTypes: List<ServiceType>
-    private lateinit var serviceTypeSelectorListner: ServiceTypeSelectorListner
-
-    constructor(context: Context, listServicesTypes:List<ServiceType>, serviceTypeSelectorListner: ServiceTypeSelectorListner) : this() {
-        this.context=context
-        this.listServicesTypes=listServicesTypes
-        this.serviceTypeSelectorListner=serviceTypeSelectorListner
-    }
-
+class HomeServiceTypeGridAdapter(
+     private var listServicesTypes: List<ServiceType>,
+     private var serviceTypeSelectorListner: ServiceTypeSelectorListner
+) : RecyclerView.Adapter<HomeServiceTypeGridAdapter.HomerServiceTypeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomerServiceTypeViewHolder {
-        val convertView = LayoutInflater.from(context).inflate(R.layout.adapter_services_type_cell,parent,false)
+        val convertView = LayoutInflater.from(parent.context).inflate(R.layout.adapter_services_type_cell,parent,false)
         return HomerServiceTypeViewHolder(convertView)
     }
 
@@ -45,7 +36,6 @@ class HomeServiceTypeGridAdapter() : RecyclerView.Adapter<HomeServiceTypeGridAda
         holder.itemView.setOnClickListener{
             serviceTypeSelectorListner.openServicePopup(listServicesTypes[position].code)
         }
-
     }
 
     class HomerServiceTypeViewHolder(itemView : View)  : RecyclerView.ViewHolder(itemView){

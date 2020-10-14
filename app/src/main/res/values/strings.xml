@@ -70,5 +70,7 @@
 
     <!--CustomServiceGridDialog-->
     <string name="avail_services">Available Cleaning Services</string>
+    <string name="employee_avail">Emp Avl.</string>
+    <string name="required_person">Req. Per</string>
 
 </resources>

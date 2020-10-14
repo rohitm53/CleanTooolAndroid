@@ -13,13 +13,9 @@ import com.cleantool.indiacleantool.common.Constants
 import com.cleantool.indiacleantool.models.servicetypes.ServiceType
 import com.cleantool.indiacleantool.utils.recylerviewitemdecoration.SpacesItemDecoration
 
-class DashboardHomeFragment() : Fragment() {
-
-    private lateinit var serviceTypeSelectorListner: ServiceTypeSelectorListner
-
-    constructor(serviceTypeSelectorListner: ServiceTypeSelectorListner) : this() {
-        this.serviceTypeSelectorListner=serviceTypeSelectorListner
-    }
+class DashboardHomeFragment(
+    private var serviceTypeSelectorListner: ServiceTypeSelectorListner
+) : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,7 +29,7 @@ class DashboardHomeFragment() : Fragment() {
         val gridLayoutManager = GridLayoutManager(context,2)
         rv_service.layoutManager=gridLayoutManager
         rv_service.setHasFixedSize(true)
-        rv_service.adapter = HomeServiceTypeGridAdapter(this.requireActivity(),getServiceTypes(),serviceTypeSelectorListner)
+        rv_service.adapter = HomeServiceTypeGridAdapter(getServiceTypes(),serviceTypeSelectorListner)
 
         rv_service.addItemDecoration(SpacesItemDecoration(10))
 
