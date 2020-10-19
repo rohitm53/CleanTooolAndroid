@@ -1,12 +1,12 @@
-package com.cleantool.indiacleantool.appmodules.providercompany
+package com.cleantool.indiacleantool.appmodules.serviceprovider.serviceprovidecompanydetails
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CompoundButton
 import android.widget.RadioButton
 import androidx.recyclerview.widget.RecyclerView
 import com.cleantool.indiacleantool.R
+import com.cleantool.indiacleantool.appmodules.serviceprovider.listner.CompanyDetailsListner
 import com.cleantool.indiacleantool.models.networkmodels.serviceprovider.TimeSlot
 import com.cleantool.indiacleantool.utils.dateutils.CalendarUtils
 
@@ -14,7 +14,6 @@ class CompanyTimeSlotsAdapter(
     private var listTimeSlots : List<TimeSlot>,
     private var companyDetailsListner: CompanyDetailsListner
 ) : RecyclerView.Adapter<CompanyTimeSlotsAdapter.ViewHolder>() {
-
 
     private var selectedPosition:Int = -1
 

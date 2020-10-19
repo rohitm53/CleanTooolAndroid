@@ -11,6 +11,42 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/tv_service_id_heading"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/worksans_bold"
+            android:paddingStart="@dimen/margin_5"
+            android:paddingEnd="@dimen/margin_5"
+            android:text="Service Id"
+            android:textColor="@color/heading_text_color"
+            android:textSize="@dimen/text_18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_service_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/worksans_regular"
+            android:paddingStart="@dimen/margin_5"
+            android:paddingEnd="@dimen/margin_5"
+            android:text="House Cleaning"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_service_id_heading" />
+
+
+
+
+
+        <TextView
             android:id="@+id/tv_service_type_name_heading"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -24,7 +60,7 @@
             android:textSize="@dimen/text_18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/tv_service_id" />
 
         <TextView
             android:id="@+id/tv_service_name"

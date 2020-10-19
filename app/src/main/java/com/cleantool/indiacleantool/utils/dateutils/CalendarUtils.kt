@@ -25,7 +25,7 @@ class CalendarUtils {
             )
         }
 
-        fun getTimeInStandFormat(time: String) : String? {
+        fun getTimeInStandFormat(time: String?) : String? {
 
             val simpleDateFormat = SimpleDateFormat("dd-MM-yyyy hh:mm:ss")
             val date = simpleDateFormat.parse(time)

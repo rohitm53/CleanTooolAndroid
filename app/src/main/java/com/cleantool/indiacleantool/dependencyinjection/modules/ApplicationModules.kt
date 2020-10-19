@@ -1,12 +1,17 @@
 package com.cleantool.indiacleantool.dependencyinjection.modules
 
+import androidx.room.Room
+import androidx.room.RoomDatabase
 import com.cleantool.indiacleantool.appmodules.login.repository.LoginRepository
 import com.cleantool.indiacleantool.appmodules.login.service.LoginService
-import com.cleantool.indiacleantool.appmodules.providercompany.ServiceProviderCompanyRespository
-import com.cleantool.indiacleantool.appmodules.providercompany.serviceApi.ServiceProviderCompanyApi
+import com.cleantool.indiacleantool.appmodules.servicebooking.data.BookServiceApi
+import com.cleantool.indiacleantool.appmodules.servicebooking.data.BookServiceRepository
+import com.cleantool.indiacleantool.appmodules.serviceprovider.data.ServiceProviderCompanyRespository
+import com.cleantool.indiacleantool.appmodules.serviceprovider.data.ServiceProviderCompanyApi
 import com.cleantool.indiacleantool.common.Preference
 import com.cleantool.indiacleantool.common.ServiceIndiaApplication
 import com.cleantool.indiacleantool.common.ServiceUrls
+import com.cleantool.indiacleantool.database.AppDatabase
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -25,6 +30,17 @@ import javax.inject.Singleton
             .baseUrl(ServiceUrls.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
+    }
+
+
+    @Singleton
+    @Provides
+    fun provideRoomDatabase(): AppDatabase {
+        return Room.databaseBuilder(
+            serviceIndiaApplication,
+            AppDatabase::class.java,"my-database"
+        ).build()
+
     }
 
     @Provides
@@ -52,14 +68,22 @@ import javax.inject.Singleton
 
     @Singleton
     @Provides
-    fun provideServiceProvideCompanyService(retrofit: Retrofit) : ServiceProviderCompanyApi{
+    fun provideServiceProvideCompanyService(retrofit: Retrofit) : ServiceProviderCompanyApi {
         return retrofit.create(ServiceProviderCompanyApi::class.java)
     }
 
     @Singleton
     @Provides
-    fun provideServiceProvideCompanyRepository() : ServiceProviderCompanyRespository{
+    fun provideServiceProvideCompanyRepository() : ServiceProviderCompanyRespository {
         return ServiceProviderCompanyRespository()
     }
+
+
+    @Singleton
+    @Provides
+    fun provideBookServiceRepository(retrofit: Retrofit,appDatabase: AppDatabase,preference: Preference): BookServiceRepository {
+        return BookServiceRepository(retrofit.create(BookServiceApi::class.java),appDatabase,preference)
+    }
+
 
 }

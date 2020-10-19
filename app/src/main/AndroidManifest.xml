@@ -6,12 +6,12 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
+        android:name=".common.ServiceIndiaApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".common.ServiceIndiaApplication"
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -43,14 +43,19 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".appmodules.providercompany.ServiceProviderCompanyActivity"
+            android:name=".appmodules.serviceprovider.serviceprovidercompanylist.ServiceProviderListActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".appmodules.serviceprovider.serviceprovidecompanydetails.ServiceProviderCompanyDetailActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".appmodules.bookingconfirmation.BookingConfirmationActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity android:name=".appmodules.confirmationscreen.ConfirmationScreenActivity"
+        <activity
+            android:name=".appmodules.servicebooking.BookServiceActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
     </application>

@@ -1,4 +1,4 @@
-package com.cleantool.indiacleantool.appmodules.providercompany.serviceApi
+package com.cleantool.indiacleantool.appmodules.serviceprovider.data
 
 import com.cleantool.indiacleantool.models.networkmodels.serviceprovider.ServiceProviderDetailResponse
 import retrofit2.http.GET

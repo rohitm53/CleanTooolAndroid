@@ -1,6 +1,6 @@
-package com.cleantool.indiacleantool.appmodules.providercompany
+package com.cleantool.indiacleantool.appmodules.serviceprovider.data
 
-import com.cleantool.indiacleantool.appmodules.providercompany.serviceApi.ServiceProviderCompanyApi
+import com.cleantool.indiacleantool.appmodules.serviceprovider.data.ServiceProviderCompanyApi
 import com.cleantool.indiacleantool.common.Preference
 import com.cleantool.indiacleantool.common.ServiceIndiaApplication
 import com.cleantool.indiacleantool.models.networkmodels.commosn.NetworkResultWrapper

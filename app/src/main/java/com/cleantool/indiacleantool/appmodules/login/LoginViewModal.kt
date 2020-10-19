@@ -38,6 +38,7 @@ class LoginViewModal : ViewModel() {
                 is NetworkResultWrapper.Success -> {
                     val loginResponse = networkResponse.value
                     if(!loginResponse.jwt.isEmpty()){
+                        preference.saveString(Preference.Keys.UserCode,loginRequest.username)
                         preference.saveString(Preference.Keys.JsonWebToken,loginResponse.jwt)
                         liveDataStatus.postValue(LoginStatus(HIDE_LOADER,null))
                         liveDataStatus.postValue(LoginStatus(SUCCESS,null))

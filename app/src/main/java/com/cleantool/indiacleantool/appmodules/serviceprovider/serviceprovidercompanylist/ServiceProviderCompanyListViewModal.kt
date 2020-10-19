@@ -1,33 +1,32 @@
-package com.cleantool.indiacleantool.appmodules.providercompany
+package com.cleantool.indiacleantool.appmodules.serviceprovider.serviceprovidercompanylist
 
 import android.text.TextUtils
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.cleantool.indiacleantool.appmodules.serviceprovider.data.ServiceProviderCompanyRespository
 import com.cleantool.indiacleantool.common.ServiceIndiaApplication
 import com.cleantool.indiacleantool.models.networkmodels.commosn.NetworkResultWrapper
-import com.cleantool.indiacleantool.models.networkmodels.serviceprovider.TimeSlot
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class ServiceProviderCompanyViewModel : ViewModel(){
-
+class ServiceProviderCompanyListViewModal : ViewModel() {
 
     init {
         ServiceIndiaApplication.getApplicationComponent().inject(this)
     }
 
-
-    @Inject lateinit var serviceProviderCompanyRespository: ServiceProviderCompanyRespository
+    @Inject
+    lateinit var serviceProviderCompanyRespository: ServiceProviderCompanyRespository
     val statusLiveData = MutableLiveData<Status>()
-
-    var requiredPerson : Int=-1
 
 
     fun getServiceProvideCompanyDetails(service_code:String){
 
+        statusLiveData.postValue(
+            Status(SHOW_LOADER,null )
+        )
         viewModelScope.launch(Dispatchers.Default) {
 
             val networkResponse = serviceProviderCompanyRespository.getServiceProviderCompanyDetails(service_code)
@@ -38,34 +37,37 @@ class ServiceProviderCompanyViewModel : ViewModel(){
 
                     val serviceProviderResponse = networkResponse.value
                     if(serviceProviderResponse.error!=null && !TextUtils.isEmpty(serviceProviderResponse.error.errormsg)){
-                        statusLiveData.postValue(Status(ERROR,serviceProviderResponse.error.errormsg))
+                        statusLiveData.postValue(
+                            Status(ERROR, serviceProviderResponse.error.errormsg)
+                        )
                     }else{
                         val listCompanyDetails = serviceProviderResponse.serviceProviderCompanyDetails
-                        statusLiveData.postValue(Status(SUCCESS,listCompanyDetails))
+                        statusLiveData.postValue(
+                            Status(SUCCESS,listCompanyDetails )
+                        )
                     }
                 }
 
                 is NetworkResultWrapper.NetworkError -> {
-                    Log.d("rohitclean", "Network Error")
-                    statusLiveData.postValue(Status(HIDE_LOADER,  null ))
-                    statusLiveData.postValue(Status( ERROR,"Error while loggin in") )
+                    statusLiveData.postValue(
+                        Status(HIDE_LOADER,null )
+                    )
+                    statusLiveData.postValue(
+                        Status(ERROR,"Network Error")
+                    )
                 }
 
                 is NetworkResultWrapper.GenericError -> {
-                    Log.d("rohitclean", "Generic Error : ${networkResponse}")
-                    statusLiveData.postValue(Status(HIDE_LOADER, null) )
-                    statusLiveData.postValue(Status(ERROR,  "Error while loggin in" ))
+                    statusLiveData.postValue(
+                        Status( HIDE_LOADER,null )
+                    )
+                    statusLiveData.postValue(
+                        Status(ERROR,"Error while fetching data." )
+                    )
                 }
             }
         }
     }
-
-    fun onReadRequiredPerson(num: Int) {
-    }
-
-    fun onTimeSlotsSelected(timeSlot: TimeSlot) {
-    }
-
 
 
     //  Status Management
@@ -78,5 +80,4 @@ class ServiceProviderCompanyViewModel : ViewModel(){
         val HIDE_LOADER = 4
         val SHOW_TOAST=5
     }
-
 }

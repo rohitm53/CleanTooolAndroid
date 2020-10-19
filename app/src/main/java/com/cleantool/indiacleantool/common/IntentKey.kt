@@ -2,6 +2,9 @@ package com.cleantool.indiacleantool.common
 
 object IntentKey {
 
-    const val Person_Req = "person_req"
-    const val Service_Code = "service_code"
+    const val PersonReq = "person_req"
+    const val ServiceCode = "service_code"
+    const val ServiceType = "service_type"
+    const val ServiceProvideDetails = "Service_provide_details"
+    const val ServiceRequest = "service_request"
 }

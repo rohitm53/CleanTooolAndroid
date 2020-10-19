@@ -24,6 +24,7 @@ class Preference(application: ServiceIndiaApplication)  {
 
 
     object Keys {
+        const val UserCode="user_code"
         const val JsonWebToken = "jsonwebtoken"
     }
 

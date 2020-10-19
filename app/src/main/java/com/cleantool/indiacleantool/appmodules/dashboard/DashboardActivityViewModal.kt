@@ -7,7 +7,7 @@ import com.cleantool.indiacleantool.models.services.Service
 
 class DashboardActivityViewModal : ViewModel() {
 
-    lateinit var hmServices : HashMap<String,List<Service>>
+    var hmServices : HashMap<String,List<Service>>
 
     init {
         hmServices = HashMap()

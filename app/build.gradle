@@ -36,6 +36,8 @@ android {
 }
 def lifecycle_version = "2.2.0"
 def daggerVersion='2.20'
+def room_version = "2.2.5"
+
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -73,6 +75,14 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:$daggerVersion"
     kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+
+
+    ///Romm Database depenedencies
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:$room_version"
 
 
     //others

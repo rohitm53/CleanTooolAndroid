@@ -10,7 +10,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.appmodules.commonmodule.BaseActivity
 import com.cleantool.indiacleantool.appmodules.dashboard.settings.ServiceSelectorListner
-import com.cleantool.indiacleantool.appmodules.providercompany.ServiceProviderCompanyActivity
+import com.cleantool.indiacleantool.appmodules.serviceprovider.serviceprovidecompanydetails.ServiceProviderCompanyDetailActivity
+import com.cleantool.indiacleantool.appmodules.serviceprovider.serviceprovidercompanylist.ServiceProviderListActivity
 import com.cleantool.indiacleantool.common.IntentKey
 import com.cleantool.indiacleantool.customdialog.servicedialog.CustomServiceGridDialog
 import com.cleantool.indiacleantool.utils.viewpagertransformer.ZoomOutPageTransformer
@@ -91,7 +92,7 @@ class DashboardActivity : BaseActivity() , ServiceTypeSelectorListner {
                     this@DashboardActivity.showLoader("Loading...")
                     Handler().postDelayed({
                         this@DashboardActivity.hideLoader()
-                        this@DashboardActivity.moveToProviderCompanylist(serviceCode)
+                        this@DashboardActivity.moveToProviderCompanylist(serviceCode,serviceType)
                     }, 1000)
                 }
 
@@ -104,9 +105,10 @@ class DashboardActivity : BaseActivity() , ServiceTypeSelectorListner {
 
 
 
-    fun moveToProviderCompanylist(serviceCode: String) {
-        val intent = Intent(this,ServiceProviderCompanyActivity::class.java)
-        intent.putExtra(IntentKey.Service_Code,serviceCode)
+    fun moveToProviderCompanylist(serviceCode: String,serviceType: String) {
+        val intent = Intent(this, ServiceProviderListActivity::class.java)
+        intent.putExtra(IntentKey.ServiceCode,serviceCode)
+        intent.putExtra(IntentKey.ServiceType,serviceType)
         startActivity(intent)
     }
 
