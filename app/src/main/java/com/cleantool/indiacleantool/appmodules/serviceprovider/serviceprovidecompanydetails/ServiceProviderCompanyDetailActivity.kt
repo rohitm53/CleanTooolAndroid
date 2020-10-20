@@ -4,9 +4,9 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Resources
+import androidx.activity.viewModels
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.appmodules.commonmodule.BaseActivity
@@ -29,16 +29,15 @@ import java.io.Serializable
 
 class ServiceProviderCompanyDetailActivity : BaseActivity(), CompanyDetailsListner, OnMapReadyCallback  {
 
-    private lateinit var viewModel: ServiceProviderCompanyDetailViewModel
+    val viewModel: ServiceProviderCompanyDetailViewModel by viewModels()
+
     private lateinit var serviceProviderCompanyDetail: ServiceProviderCompanyDetail
     private  var googleMap: GoogleMap?=null
-
 
     override fun initialize() {
         layoutInflater.inflate(R.layout.activity_service_provider_company,ll_body,true)
         setMapFrameHeight()
 
-        viewModel = ViewModelProvider(this).get(ServiceProviderCompanyDetailViewModel::class.java)
 
         serviceProviderCompanyDetail = intent.extras?.get(IntentKey.ServiceProvideDetails) as ServiceProviderCompanyDetail
         viewModel.serviceCode = intent.getStringExtra(IntentKey.ServiceCode)!!
@@ -58,7 +57,7 @@ class ServiceProviderCompanyDetailActivity : BaseActivity(), CompanyDetailsListn
         rv_time_slot.apply {
             adapter = CompanyTimeSlotsAdapter(serviceProviderCompanyDetail.timeSlots,this@ServiceProviderCompanyDetailActivity)
             layoutManager = LinearLayoutManager(this@ServiceProviderCompanyDetailActivity)
-       }
+        }
 
         btn_continue.setOnClickListener {
             moveToConfirmationScreen()
@@ -111,11 +110,20 @@ class ServiceProviderCompanyDetailActivity : BaseActivity(), CompanyDetailsListn
 
     fun moveToConfirmationScreen(){
 
-        val intent=Intent(this, BookServiceActivity::class.java).apply {
-            putExtra(IntentKey.ServiceRequest,viewModel.generateServiceRequest() as Serializable)
-            putExtra(IntentKey.ServiceProvideDetails,serviceProviderCompanyDetail as Serializable)
+        if(!viewModel.isTimeSlotSelected()){
+            showAlert("Please select Time slot" , {dialog,which ->
+                showToast("Yes Pressed")
+            },{dialog,which->
+                showToast("No Pressed")
+            })
+        }else{
+            val intent=Intent(this, BookServiceActivity::class.java).apply {
+                putExtra(IntentKey.ServiceRequest,viewModel.generateServiceRequest() as Serializable)
+                putExtra(IntentKey.ServiceProvideDetails,serviceProviderCompanyDetail as Serializable)
+            }
+            startActivity(intent)
         }
-        startActivity(intent)
+
     }
 
 }

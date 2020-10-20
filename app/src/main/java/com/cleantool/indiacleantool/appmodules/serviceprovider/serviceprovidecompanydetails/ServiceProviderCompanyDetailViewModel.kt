@@ -50,6 +50,9 @@ class ServiceProviderCompanyDetailViewModel : ViewModel(){
         }!!.serviceName
     }
 
+    fun isTimeSlotSelected():Boolean = (this::timeSlot.isInitialized)
+
+
 
     fun generateServiceRequest() : ServiceRequest{
          return serviceRequest.apply {

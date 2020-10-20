@@ -1,5 +1,6 @@
 package com.cleantool.indiacleantool.dependencyinjection.component
 
+import com.cleantool.indiacleantool.appmodules.dashboard.history.DashboardHistoryViewModal
 import com.cleantool.indiacleantool.appmodules.servicebooking.BookServiceViewModal
 import com.cleantool.indiacleantool.appmodules.login.LoginViewModal
 import com.cleantool.indiacleantool.appmodules.login.repository.LoginRepository
@@ -24,6 +25,9 @@ interface ApplicationComponent {
 
 
     fun inject(bookServiceViewModal: BookServiceViewModal)
+
+
+    fun inject(dashboardHistoryViewModal: DashboardHistoryViewModal)
 
 
 

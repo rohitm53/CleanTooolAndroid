@@ -2,6 +2,8 @@ package com.cleantool.indiacleantool.dependencyinjection.modules
 
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.cleantool.indiacleantool.appmodules.dashboard.history.DashboardHistoryApi
+import com.cleantool.indiacleantool.appmodules.dashboard.history.DashboardHistoryRepository
 import com.cleantool.indiacleantool.appmodules.login.repository.LoginRepository
 import com.cleantool.indiacleantool.appmodules.login.service.LoginService
 import com.cleantool.indiacleantool.appmodules.servicebooking.data.BookServiceApi
@@ -83,6 +85,18 @@ import javax.inject.Singleton
     @Provides
     fun provideBookServiceRepository(retrofit: Retrofit,appDatabase: AppDatabase,preference: Preference): BookServiceRepository {
         return BookServiceRepository(retrofit.create(BookServiceApi::class.java),appDatabase,preference)
+    }
+
+    @Singleton
+    @Provides
+    fun provideDashboardServiceApi(retrofit: Retrofit) : DashboardHistoryApi {
+        return retrofit.create(DashboardHistoryApi::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideDashboardRepository(dashboardHistoryApi: DashboardHistoryApi,preference: Preference) : DashboardHistoryRepository{
+        return DashboardHistoryRepository(dashboardHistoryApi,preference)
     }
 
 

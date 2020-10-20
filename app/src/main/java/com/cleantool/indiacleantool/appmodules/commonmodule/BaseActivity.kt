@@ -1,9 +1,12 @@
 package com.cleantool.indiacleantool.appmodules.commonmodule
 
 import android.animation.ObjectAnimator
+import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
+import android.text.Html
 import android.text.TextUtils
 import android.view.View
 import android.view.animation.Animation
@@ -46,6 +49,26 @@ abstract class BaseActivity : AppCompatActivity() {
             if(this::progressDialog.isInitialized && progressDialog.isShowing){
                 progressDialog.cancel()
             }
+        }
+    }
+
+    fun showAlert(msg:String,
+                  positiveAction:DialogInterface.OnClickListener,
+                  negativeAction:DialogInterface.OnClickListener  ){
+
+        this.runOnUiThread {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Alert! ")
+            builder.setIcon(R.drawable.dialog_error_icon)
+            builder.setMessage(msg)
+
+            builder.setPositiveButton(Html.fromHtml("<font color=#CE0000>${getString(R.string.ok)}</font>"),positiveAction)
+            builder.setNegativeButton(Html.fromHtml("<font color=#CE0000>${getString(R.string.cancel)}</font>"),negativeAction)
+
+
+            val alertDialog = builder.create()
+            alertDialog.setCancelable(false)
+            alertDialog.show()
         }
     }
 

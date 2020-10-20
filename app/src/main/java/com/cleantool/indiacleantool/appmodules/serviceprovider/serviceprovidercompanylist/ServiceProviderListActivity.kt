@@ -3,6 +3,7 @@ package com.cleantool.indiacleantool.appmodules.serviceprovider.serviceproviderc
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cleantool.indiacleantool.R
@@ -21,7 +22,7 @@ import java.io.Serializable
 
 class ServiceProviderListActivity : BaseActivity() , ServiceProviderListner {
 
-    lateinit var viewModal: ServiceProviderCompanyListViewModal
+    val viewModal: ServiceProviderCompanyListViewModal by viewModels()
 
     private var serviceCode : String=""
     private var serviceType : String=""
@@ -32,7 +33,6 @@ class ServiceProviderListActivity : BaseActivity() , ServiceProviderListner {
         serviceCode = intent.getStringExtra(IntentKey.ServiceCode)!!
         serviceType = intent.getStringExtra(IntentKey.ServiceType)!!
 
-        viewModal = ViewModelProvider(this).get(ServiceProviderCompanyListViewModal::class.java)
 
         viewModal.getServiceProvideCompanyDetails(serviceCode)
         viewModal.statusLiveData.observe(this,{

@@ -72,5 +72,9 @@
     <string name="avail_services">Available Cleaning Services</string>
     <string name="employee_avail">Emp Avl.</string>
     <string name="required_person">Req. Per</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="network_issue">Their is network issue, please check network connection</string>
+    <string name="error_while_fetching_records">Error while fetching recordes</string>
 
 </resources>

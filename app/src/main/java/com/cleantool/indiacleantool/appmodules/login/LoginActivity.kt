@@ -1,6 +1,7 @@
 package com.cleantool.indiacleantool.appmodules.login
 
 import android.content.Intent
+import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
@@ -13,7 +14,7 @@ import kotlinx.android.synthetic.main.base_activity.*
 
 class LoginActivity : BaseActivity() {
 
-    private lateinit var loginViewModal: LoginViewModal
+    val loginViewModal :LoginViewModal by viewModels()
 
     override fun initialize() {
 
@@ -24,7 +25,6 @@ class LoginActivity : BaseActivity() {
             ll_body,
             true
         )
-        loginViewModal = ViewModelProvider(this).get(LoginViewModal::class.java)
         activityLoginBinding.apply {
             viewmodal=loginViewModal
         }
