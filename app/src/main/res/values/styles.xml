@@ -23,4 +23,11 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
+
+    <!-- Theme.AppCompat.Light is not a dialog theme -->
+    <style name="DatePickerDialogTheme" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">@color/date_picker_theme_color</item>
+        <item name="android:windowFullscreen">false</item>
+    </style>
+
 </resources>

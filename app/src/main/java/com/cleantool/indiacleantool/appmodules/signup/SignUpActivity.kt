@@ -33,10 +33,10 @@ class SignUpActivity : BaseActivity() {
 
     private fun showDatePickerDialog(){
 
-        DatePickerDialog(this,dateSetListner,
-                                                    calendar.get(Calendar.YEAR),
-                                                    calendar.get(Calendar.MONTH),
-                                                    calendar.get(Calendar.DAY_OF_MONTH)).show()
+        DatePickerDialog(this,R.style.DatePickerDialogTheme,dateSetListner,
+                                    calendar.get(Calendar.YEAR),
+                                    calendar.get(Calendar.MONTH),
+                                    calendar.get(Calendar.DAY_OF_MONTH)).show()
 
     }
 

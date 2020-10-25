@@ -1,8 +1,7 @@
 package com.cleantool.indiacleantool.dependencyinjection.modules
 
 import androidx.room.Room
-import androidx.room.RoomDatabase
-import com.cleantool.indiacleantool.appmodules.dashboard.history.DashboardHistoryApi
+import com.cleantool.indiacleantool.appmodules.dashboard.data.DashboardApi
 import com.cleantool.indiacleantool.appmodules.dashboard.history.DashboardHistoryRepository
 import com.cleantool.indiacleantool.appmodules.login.repository.LoginRepository
 import com.cleantool.indiacleantool.appmodules.login.service.LoginService
@@ -89,14 +88,14 @@ import javax.inject.Singleton
 
     @Singleton
     @Provides
-    fun provideDashboardServiceApi(retrofit: Retrofit) : DashboardHistoryApi {
-        return retrofit.create(DashboardHistoryApi::class.java)
+    fun provideDashboardServiceApi(retrofit: Retrofit) : DashboardApi {
+        return retrofit.create(DashboardApi::class.java)
     }
 
     @Singleton
     @Provides
-    fun provideDashboardRepository(dashboardHistoryApi: DashboardHistoryApi,preference: Preference) : DashboardHistoryRepository{
-        return DashboardHistoryRepository(dashboardHistoryApi,preference)
+    fun provideDashboardRepository(dashboardApi: DashboardApi,preference: Preference) : DashboardHistoryRepository{
+        return DashboardHistoryRepository(dashboardApi,preference)
     }
 
 

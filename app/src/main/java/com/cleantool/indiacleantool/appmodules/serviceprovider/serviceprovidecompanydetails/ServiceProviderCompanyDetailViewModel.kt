@@ -1,24 +1,16 @@
 package com.cleantool.indiacleantool.appmodules.serviceprovider.serviceprovidecompanydetails
 
-import android.text.TextUtils
-import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.cleantool.indiacleantool.common.Constants
 import com.cleantool.indiacleantool.common.Preference
 import com.cleantool.indiacleantool.common.ServiceIndiaApplication
 import com.cleantool.indiacleantool.common.StaticDataProvider
-import com.cleantool.indiacleantool.database.AppDatabase
-import com.cleantool.indiacleantool.models.networkmodels.bookservice.ServiceRequest
-import com.cleantool.indiacleantool.models.networkmodels.commosn.NetworkResultWrapper
+import com.cleantool.indiacleantool.models.networkmodels.servicerequest.ServiceRequest
 import com.cleantool.indiacleantool.models.networkmodels.serviceprovider.Company
 import com.cleantool.indiacleantool.models.networkmodels.serviceprovider.TimeSlot
 import com.cleantool.indiacleantool.models.services.Service
 import com.cleantool.indiacleantool.utils.dateutils.CalendarUtils
 import com.cleantool.indiacleantool.utils.stringutils.getUniqueStringId
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class ServiceProviderCompanyDetailViewModel : ViewModel(){

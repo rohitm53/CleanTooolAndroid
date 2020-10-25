@@ -2,8 +2,8 @@ package com.cleantool.indiacleantool.appmodules.servicebooking.data
 
 import com.cleantool.indiacleantool.common.Preference
 import com.cleantool.indiacleantool.database.AppDatabase
-import com.cleantool.indiacleantool.models.networkmodels.bookservice.ServiceRequest
-import com.cleantool.indiacleantool.models.networkmodels.bookservice.ServiceResponse
+import com.cleantool.indiacleantool.models.networkmodels.servicerequest.ServiceRequest
+import com.cleantool.indiacleantool.models.networkmodels.servicerequest.ServiceResponse
 import com.cleantool.indiacleantool.models.networkmodels.commosn.NetworkResultWrapper
 import com.cleantool.indiacleantool.networkcalls.safeApiCall
 

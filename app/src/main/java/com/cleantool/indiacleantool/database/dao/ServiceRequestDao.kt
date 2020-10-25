@@ -1,7 +1,7 @@
 package com.cleantool.indiacleantool.database.dao
 
 import androidx.room.*
-import com.cleantool.indiacleantool.models.networkmodels.bookservice.ServiceRequest
+import com.cleantool.indiacleantool.models.networkmodels.servicerequest.ServiceRequest
 
 @Dao
 interface ServiceRequestDao {

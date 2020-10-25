@@ -12,7 +12,7 @@ import com.cleantool.indiacleantool.appmodules.dashboard.DashboardActivity
 import com.cleantool.indiacleantool.appmodules.dashboard.history.DashboardHistoryViewModal.Companion.ERROR
 import com.cleantool.indiacleantool.appmodules.dashboard.history.DashboardHistoryViewModal.Companion.SERVICE_REQUEST_FETCHED
 import com.cleantool.indiacleantool.appmodules.dashboard.history.DashboardHistoryViewModal.Companion.SHOW_LOADER
-import com.cleantool.indiacleantool.models.networkmodels.dashboardservicerequest.PendingServiceRequest
+import com.cleantool.indiacleantool.models.networkmodels.servicerequest.ServiceRequest
 import kotlinx.android.synthetic.main.fragment_dashboard_history.*
 
 class DashboardHistoryFragment : Fragment() {
@@ -43,7 +43,7 @@ class DashboardHistoryFragment : Fragment() {
 
                 SERVICE_REQUEST_FETCHED -> {
                     (activity as DashboardActivity).hideLoader()
-                    val listPendingService = it.data as List<PendingServiceRequest>
+                    val listPendingService = it.data as List<ServiceRequest>
                     updatePendingServiceList(listPendingService)
                 }
 
@@ -54,12 +54,17 @@ class DashboardHistoryFragment : Fragment() {
 
             }
         })
+
+        swipe_refresh.setOnRefreshListener {
+            viewModal.getAllPendingServiceRequest()
+            swipe_refresh.isRefreshing=false
+        }
     }
 
-    private fun updatePendingServiceList(listPendingService : List<PendingServiceRequest>){
+    private fun updatePendingServiceList(listPendingService : List<ServiceRequest>){
         rc_pending_service.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = PendingServiceRequestAdapter(listPendingService)
+            adapter = PendingServiceRequestAdapter(requireContext(),listPendingService)
         }
     }
 }

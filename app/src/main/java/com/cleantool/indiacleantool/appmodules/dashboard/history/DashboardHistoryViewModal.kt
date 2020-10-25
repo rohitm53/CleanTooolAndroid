@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cleantool.indiacleantool.R
-import com.cleantool.indiacleantool.appmodules.servicebooking.BookServiceViewModal
 import com.cleantool.indiacleantool.common.ServiceIndiaApplication
 import com.cleantool.indiacleantool.models.networkmodels.commosn.NetworkResultWrapper
 import kotlinx.coroutines.Dispatchers
@@ -32,7 +31,7 @@ class DashboardHistoryViewModal : ViewModel() {
             when (networkResponse){
 
                 is NetworkResultWrapper.Success -> {
-                    statusLiveData.postValue(Status(SERVICE_REQUEST_FETCHED,networkResponse.value))
+                    statusLiveData.postValue(Status(SERVICE_REQUEST_FETCHED,networkResponse.value.serviceRequests))
                 }
 
                 is NetworkResultWrapper.NetworkError -> {

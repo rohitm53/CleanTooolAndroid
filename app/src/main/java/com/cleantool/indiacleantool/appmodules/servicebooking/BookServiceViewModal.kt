@@ -1,18 +1,13 @@
 package com.cleantool.indiacleantool.appmodules.servicebooking
 
-import android.util.Log.d
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cleantool.indiacleantool.appmodules.servicebooking.data.BookServiceRepository
-import com.cleantool.indiacleantool.common.Constants
 import com.cleantool.indiacleantool.common.ServiceIndiaApplication
-import com.cleantool.indiacleantool.common.StaticDataProvider
-import com.cleantool.indiacleantool.database.AppDatabase
-import com.cleantool.indiacleantool.models.networkmodels.bookservice.ServiceRequest
+import com.cleantool.indiacleantool.models.networkmodels.servicerequest.ServiceRequest
 import com.cleantool.indiacleantool.models.networkmodels.commosn.NetworkResultWrapper
 import com.cleantool.indiacleantool.models.networkmodels.serviceprovider.ServiceProviderCompanyDetail
-import com.cleantool.indiacleantool.models.services.Service
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject

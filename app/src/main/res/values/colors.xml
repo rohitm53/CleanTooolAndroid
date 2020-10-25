@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#CE0000</color>
-    <color name="colorPrimaryDark">#950101</color>
+    <color name="colorPrimaryDark">#752424</color>
     <color name="colorAccent">#FFFFFF</color>
+
 
     <color name="transparent">#00000000</color>
 
@@ -22,4 +23,14 @@
     <color name="gray">#d9d9d9</color>
     <color name="persian_blue">#030056</color>
     <color name="heading_text_color">#0275d8</color>
+    <color name="date_picker_theme_color">#0088FF</color>
+
+
+    <color name="pending_service_req">#FF4800</color>
+    <color name="assigned_service_req">#FFBF00</color>
+    <color name="inprogress_service_req">#0342FF</color>
+    <color name="completed_service_req">#46FF03</color>
+    <color name="cancelled_service_req">#FF0303</color>
+
+
 </resources>

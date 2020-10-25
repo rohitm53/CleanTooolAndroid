@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Handler
 import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.cleantool.indiacleantool.R
@@ -20,16 +21,14 @@ import kotlinx.android.synthetic.main.base_activity.*
 
 class DashboardActivity : BaseActivity() , ServiceTypeSelectorListner {
 
-    private lateinit var customServiceGridDialog:CustomServiceGridDialog
+    val viewModal : DashboardActivityViewModal by viewModels()
 
-    private lateinit var viewModal: DashboardActivityViewModal
+    private lateinit var customServiceGridDialog:CustomServiceGridDialog
 
 
     override fun initialize() {
 
         layoutInflater.inflate(R.layout.activity_dashboard,ll_body,true)
-        viewModal = ViewModelProvider(this).get(DashboardActivityViewModal::class.java)
-
 
         viewpager.setPageTransformer(ZoomOutPageTransformer())
         viewpager.adapter = DashboardPagerAdapter(this,this)

@@ -1,21 +1,20 @@
 package com.cleantool.indiacleantool.appmodules.servicebooking
 
 import android.content.Intent
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
 import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.appmodules.bookingconfirmation.BookingConfirmationActivity
 import com.cleantool.indiacleantool.appmodules.commonmodule.BaseActivity
 import com.cleantool.indiacleantool.common.IntentKey
-import com.cleantool.indiacleantool.models.networkmodels.bookservice.ServiceRequest
+import com.cleantool.indiacleantool.models.networkmodels.servicerequest.ServiceRequest
 import com.cleantool.indiacleantool.models.networkmodels.serviceprovider.ServiceProviderCompanyDetail
-import com.cleantool.indiacleantool.utils.dateutils.CalendarUtils
 import kotlinx.android.synthetic.main.activity_book_service.*
 import kotlinx.android.synthetic.main.base_activity.*
 import java.io.Serializable
 
 class BookServiceActivity : BaseActivity() {
 
-    private lateinit var viewModal: BookServiceViewModal
+    val viewModal: BookServiceViewModal by viewModels()
 
     private lateinit var serviceProviderCompanyDetail: ServiceProviderCompanyDetail
     private lateinit var serviceRequest: ServiceRequest
@@ -26,7 +25,6 @@ class BookServiceActivity : BaseActivity() {
         serviceProviderCompanyDetail = intent.extras?.get(IntentKey.ServiceProvideDetails) as ServiceProviderCompanyDetail
         serviceRequest = intent.extras?.get(IntentKey.ServiceRequest) as ServiceRequest
 
-        viewModal = ViewModelProvider(this).get(BookServiceViewModal::class.java)
         viewModal.serviceProviderCompanyDetail=serviceProviderCompanyDetail
         viewModal.serviceRequest=serviceRequest
 
