@@ -28,8 +28,8 @@ class BookingConfirmationActivity : BaseActivity() {
         tv_service_id.text = serviceRequest.serviceReqCode
         tv_service_name.text=serviceRequest.serviceName
         tv_provider_name.text=serviceRequest.companyName
-        tv_time_slot.text=CalendarUtils.getTimeInStandFormat(serviceRequest.time)
-        tv_estimate_time.text=CalendarUtils.getTimeInStandFormat(serviceRequest.time)
+        tv_time_slot.text=CalendarUtils.getTimeInStandFormat(serviceRequest.scheduled)
+        tv_estimate_time.text=CalendarUtils.getTimeInStandFormat(serviceRequest.scheduled)
 
         if(isFromHistory){
 
@@ -95,8 +95,10 @@ class BookingConfirmationActivity : BaseActivity() {
             if(isFromHistory){
                 finish()
             }else{
-                val intent = Intent(this,DashboardActivity::class.java)
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                val intent = Intent(this,DashboardActivity::class.java).apply {
+                    setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    putExtra(IntentKey.IsFromConfirmBooking,true)
+                }
                 startActivity(intent)
             }
         }

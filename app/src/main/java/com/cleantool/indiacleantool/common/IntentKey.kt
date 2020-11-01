@@ -8,4 +8,5 @@ object IntentKey {
     const val ServiceProvideDetails = "Service_provide_details"
     const val ServiceRequest = "service_request"
     const val IsFromHistory = "is_from_history"
+    const val IsFromConfirmBooking = "is-from-confirm-booking";
 }

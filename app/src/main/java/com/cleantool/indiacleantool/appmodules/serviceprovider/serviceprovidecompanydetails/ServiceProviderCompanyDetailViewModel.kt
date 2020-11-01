@@ -55,7 +55,7 @@ class ServiceProviderCompanyDetailViewModel : ViewModel(){
            serviceMsgId = getUniqueStringId()
 
            serviceName = this@ServiceProviderCompanyDetailViewModel.serviceName
-           time=  CalendarUtils.getTimeInStandFormat(timeSlot.time)
+           scheduled=  timeSlot.time
         }
     }
 

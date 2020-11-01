@@ -36,7 +36,7 @@ class PendingServiceRequestAdapter(
         holder.tv_company_name.text = "By ${serviceRequest.companyName}"
         holder.tv_req_id.text = "Req id : ${serviceRequest.serviceReqCode}"
         holder.tv_service_name.text = serviceRequest.serviceName
-        holder.tv_time_slot.text = "Time  : ${CalendarUtils.getTimeInStandFormat(serviceRequest.time)}"
+        holder.tv_time_slot.text = "Time  : ${CalendarUtils.getTimeInStandFormat(serviceRequest.scheduled)}"
         holder.tv_status.text=serviceRequest.statusName
 
 

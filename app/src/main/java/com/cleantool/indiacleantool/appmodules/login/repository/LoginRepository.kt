@@ -9,16 +9,7 @@ import com.cleantool.indiacleantool.networkcalls.safeApiCall
 import javax.inject.Inject
 
 
-class LoginRepository() {
-
-
-    init {
-        ServiceIndiaApplication.getApplicationComponent().inject(this)
-    }
-
-    @Inject
-    lateinit var loginService : LoginService
-
+class LoginRepository @Inject constructor( var loginService : LoginService) {
 
     suspend fun authenticatUser(loginRequest: LoginRequest): NetworkResultWrapper<LoginResponse> {
         return safeApiCall { loginService.authenticateUser(loginRequest) }

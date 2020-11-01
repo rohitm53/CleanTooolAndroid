@@ -37,7 +37,7 @@ class BookServiceViewModal : ViewModel() {
                is NetworkResultWrapper.Success -> {
                     val serviceResponse = response.value
                     serviceRequest.serviceReqCode=serviceResponse.serviceReqCode
-                    serviceRequest.time=serviceResponse.time
+                    serviceRequest.scheduled=serviceResponse.scheduled
                     serviceRequest.companyName=serviceProviderCompanyDetail.company.companyName
                     statusLiveData.postValue(Status(MOVE_TO_CONFIRMATION,serviceRequest))
                }

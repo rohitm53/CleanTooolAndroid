@@ -8,6 +8,7 @@ import com.cleantool.indiacleantool.appmodules.commonmodule.BaseActivity
 import com.cleantool.indiacleantool.common.IntentKey
 import com.cleantool.indiacleantool.models.networkmodels.servicerequest.ServiceRequest
 import com.cleantool.indiacleantool.models.networkmodels.serviceprovider.ServiceProviderCompanyDetail
+import com.cleantool.indiacleantool.utils.dateutils.CalendarUtils
 import kotlinx.android.synthetic.main.activity_book_service.*
 import kotlinx.android.synthetic.main.base_activity.*
 import java.io.Serializable
@@ -34,7 +35,7 @@ class BookServiceActivity : BaseActivity() {
         tv_provider_name.text = serviceProviderCompanyDetail.company.companyName
         tv_provider_address.text = serviceProviderCompanyDetail.company.address
 
-        tv_time_slot.text = serviceRequest.time
+        tv_time_slot.text = CalendarUtils.getTimeInStandFormat(serviceRequest.scheduled)
 
         viewModal.statusLiveData.observe(this,  {
 

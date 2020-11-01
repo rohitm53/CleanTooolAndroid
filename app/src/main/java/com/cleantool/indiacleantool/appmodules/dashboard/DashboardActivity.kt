@@ -34,6 +34,8 @@ class DashboardActivity : BaseActivity() , ServiceTypeSelectorListner {
         viewpager.adapter = DashboardPagerAdapter(this,this)
 
 
+
+
         viewpager.registerOnPageChangeCallback( object : ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {
                 if(position==0){
@@ -68,6 +70,14 @@ class DashboardActivity : BaseActivity() , ServiceTypeSelectorListner {
                 }
                 else -> false
             }
+        }
+
+        val IsFromConfirmBooking = intent.getBooleanExtra(IntentKey.IsFromConfirmBooking,false)
+        if(IsFromConfirmBooking){
+           showLoader("")
+            Handler().postDelayed({
+                viewpager.setCurrentItem(2)
+            },1000)
         }
     }
 

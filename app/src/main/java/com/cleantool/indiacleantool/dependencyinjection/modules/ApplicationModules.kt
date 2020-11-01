@@ -61,11 +61,7 @@ import javax.inject.Singleton
         return Preference(serviceIndiaApplication)
     }
 
-    @Singleton
-    @Provides
-    fun provideLoginRepository(): LoginRepository {
-        return  LoginRepository()
-    }
+
 
     @Singleton
     @Provides

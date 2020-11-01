@@ -20,7 +20,7 @@ data class ServiceRequest(
     //only App side , Need to get by Response only
 
     var companyName: String? = null,
-    var time: String? = null,
+    var scheduled: String? = null,
     var serviceName: String? = null,
     val assignedEmployeeMobile: String? = null,
     val assignedEmployeeName: String? = null,

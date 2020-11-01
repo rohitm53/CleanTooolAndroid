@@ -7,6 +7,6 @@ data class ServiceResponse(
     val serviceReqCode: String,
     val statusCode: Int,
     val statusName: String,
-    var time: String,
+    var scheduled: String,
     val error : Error
 )

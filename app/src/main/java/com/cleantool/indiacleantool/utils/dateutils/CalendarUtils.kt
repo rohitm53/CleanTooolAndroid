@@ -9,6 +9,7 @@ class CalendarUtils {
 
     companion object {
 
+        const val APP_LEVEL_PATTERN="yyyy-MM-dd@HH:mm:ss.SSSZ"
         const val STANDARD_TIME_FORMAT = "hh:mm"
         const val STANDARD_DATE_FORMAT="yyyy-MM-dd"
 
@@ -25,11 +26,11 @@ class CalendarUtils {
             )
         }
 
-        fun getTimeInStandFormat(time: String?) : String? {
+        fun getTimeInStandFormat(time: String?) : String {
 
-            val simpleDateFormat = SimpleDateFormat("dd-MM-yyyy hh:mm:ss")
+            val simpleDateFormat = SimpleDateFormat(APP_LEVEL_PATTERN,Locale.ENGLISH)
             val date = simpleDateFormat.parse(time)
-            val timeFormat = SimpleDateFormat("hh:mm")
+            val timeFormat = SimpleDateFormat(STANDARD_TIME_FORMAT)
             return timeFormat.format(date)
         }
 
