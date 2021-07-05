@@ -5,13 +5,12 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Handler
 import android.view.MenuItem
+import android.view.View
 import androidx.activity.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.appmodules.commonmodule.BaseActivity
 import com.cleantool.indiacleantool.appmodules.dashboard.settings.ServiceSelectorListner
-import com.cleantool.indiacleantool.appmodules.serviceprovider.serviceprovidecompanydetails.ServiceProviderCompanyDetailActivity
 import com.cleantool.indiacleantool.appmodules.serviceprovider.serviceprovidercompanylist.ServiceProviderListActivity
 import com.cleantool.indiacleantool.common.IntentKey
 import com.cleantool.indiacleantool.customdialog.servicedialog.CustomServiceGridDialog
@@ -29,7 +28,7 @@ class DashboardActivity : BaseActivity() , ServiceTypeSelectorListner {
     override fun initialize() {
 
         layoutInflater.inflate(R.layout.activity_dashboard,ll_body,true)
-
+        toolbar.visibility= View.GONE;
         viewpager.setPageTransformer(ZoomOutPageTransformer())
         viewpager.adapter = DashboardPagerAdapter(this,this)
 
@@ -110,6 +109,7 @@ class DashboardActivity : BaseActivity() , ServiceTypeSelectorListner {
         customServiceGridDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         customServiceGridDialog.setCancelable(true)
         customServiceGridDialog.show();
+
     }
 
 

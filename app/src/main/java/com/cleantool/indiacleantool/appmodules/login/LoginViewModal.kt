@@ -9,7 +9,6 @@ import com.cleantool.indiacleantool.common.Preference
 import com.cleantool.indiacleantool.common.ServiceIndiaApplication
 import com.cleantool.indiacleantool.models.networkmodels.commosn.NetworkResultWrapper
 import com.cleantool.indiacleantool.models.networkmodels.login.LoginRequest
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -31,7 +30,7 @@ class LoginViewModal : ViewModel() {
 
     fun authenticateUser(){
 
-        viewModelScope.launch(Dispatchers.Default) {
+        viewModelScope.launch {
             liveDataStatus.postValue(LoginStatus(SHOW_LOADER,"Loggin in"))
             val networkResponse = loginRepository.authenticatUser(loginRequest)
             when(networkResponse){
@@ -41,7 +40,7 @@ class LoginViewModal : ViewModel() {
                         preference.saveString(Preference.Keys.UserCode,loginRequest.username)
                         preference.saveString(Preference.Keys.JsonWebToken,loginResponse.jwt)
                         liveDataStatus.postValue(LoginStatus(HIDE_LOADER,null))
-                        liveDataStatus.postValue(LoginStatus(SUCCESS,null))
+                        liveDataStatus.postValue(LoginStatus(SUCCESS,loginResponse.jwt))
                     }
                 }
 

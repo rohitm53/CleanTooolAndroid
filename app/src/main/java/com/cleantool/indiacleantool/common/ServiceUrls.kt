@@ -4,10 +4,11 @@ object ServiceUrls {
 
 
     //Local : http://localhost:8080/api/users/authenticate
-
-    const val BASE_URL = "http://192.168.1.103:8080"
+//http://test1cleanservice-env.eba-yhqmgaep.ap-south-1.elasticbeanstalk.com/api/users/mobile-user
+    const val BASE_URL = "http://test1cleanservice-env.eba-yhqmgaep.ap-south-1.elasticbeanstalk.com/"
 
     const val Login_Endpoint="api/users/authenticate"
+    const val SignUp_Endpoint="api/users/mobile-user"
 
     const val COMMON_URL="api/mobile/"
 
@@ -17,6 +18,7 @@ object ServiceUrls {
     const val ServiceProviderUrl="api/mobile/servicedetails/{service_code}"
     const val BookServiceUrl = "api/servicerequest/book"
     const val GetAllMobileUserServiceRequest = "api/servicerequest/mobile"
+    const val UserRegistration = "/api/users/mobile-user"
 
 
 }

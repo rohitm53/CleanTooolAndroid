@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.appmodules.dashboard.ServiceTypeSelectorListner
@@ -26,9 +26,8 @@ class DashboardHomeFragment(
 
         val rv_service = view.findViewById<RecyclerView>(R.id.rv_service)
 
-        val gridLayoutManager = GridLayoutManager(context,2)
+        val gridLayoutManager = LinearLayoutManager(context)
         rv_service.layoutManager=gridLayoutManager
-        rv_service.setHasFixedSize(true)
         rv_service.adapter = HomeServiceTypeGridAdapter(getServiceTypes(),serviceTypeSelectorListner)
 
         rv_service.addItemDecoration(SpacesItemDecoration(10))
@@ -40,13 +39,13 @@ class DashboardHomeFragment(
 
         val listServicesTypes = ArrayList<ServiceType>()
 
-        var serviceType = ServiceType(Constants.House_Hold_Type,R.drawable.house_hold_icon,Constants.House_Hold_Type)
+        var serviceType = ServiceType(Constants.House_Hold_Type,R.drawable.house_hold_cleaning,Constants.House_Hold_Type)
         listServicesTypes.add(serviceType)
 
-        serviceType = ServiceType(Constants.Commercial_Type,R.drawable.commercial_icon,Constants.Commercial_Type)
+        serviceType = ServiceType(Constants.Commercial_Type,R.drawable.commercial_cleaning,Constants.Commercial_Type)
         listServicesTypes.add(serviceType)
 
-        serviceType = ServiceType(Constants.Laundary_Type,R.drawable.laundary_icon,Constants.Laundary_Type)
+        serviceType = ServiceType(Constants.Laundary_Type,R.drawable.laundry_services,Constants.Laundary_Type)
         listServicesTypes.add(serviceType)
 
 //        serviceType = ServiceType(Constants.Gardening_Type,R.drawable.garden_icon,Constants.Gardening_Type)

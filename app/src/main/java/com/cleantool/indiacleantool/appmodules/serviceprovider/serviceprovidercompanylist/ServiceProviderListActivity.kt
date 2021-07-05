@@ -1,10 +1,7 @@
 package com.cleantool.indiacleantool.appmodules.serviceprovider.serviceprovidercompanylist
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.appmodules.commonmodule.BaseActivity
@@ -34,7 +31,7 @@ class ServiceProviderListActivity : BaseActivity() , ServiceProviderListner {
         serviceType = intent.getStringExtra(IntentKey.ServiceType)!!
 
 
-        viewModal.getServiceProvideCompanyDetails(serviceCode)
+        viewModal.getServiceProvideCompanyDetails(this,serviceCode)
         viewModal.statusLiveData.observe(this,{
 
             when(it.status){

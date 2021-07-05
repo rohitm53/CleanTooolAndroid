@@ -32,5 +32,16 @@
     <color name="completed_service_req">#46FF03</color>
     <color name="cancelled_service_req">#FF0303</color>
 
+   <!-- new-->
+    <color name="black_bg">#1F242C</color>
+    <color name="blue">#4A83E5</color>
+    <color name="border_gray">#979797</color>
+    <color name="login_green">#3BBB4B</color>
+    <color name="login_dark_gray">#0F4B16</color>
+    <color name="orange_new">#F7931E</color>
+    <color name="light_white">#FAFAFA</color>
+    <color name="red">#E91F1F</color>
+    <color name="black_new">#424448</color>
+
 
 </resources>

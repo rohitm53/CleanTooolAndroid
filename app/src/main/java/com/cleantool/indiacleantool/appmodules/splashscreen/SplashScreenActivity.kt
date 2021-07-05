@@ -1,13 +1,14 @@
 package com.cleantool.indiacleantool.appmodules.splashscreen
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Handler
 import androidx.core.app.ActivityCompat
 import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.appmodules.commonmodule.BaseActivity
-import com.cleantool.indiacleantool.appmodules.welcomscreen.WelcomeScreenActivity
+import com.cleantool.indiacleantool.appmodules.login.LoginActivity
 import kotlinx.android.synthetic.main.base_activity.*
 
 class SplashScreenActivity : BaseActivity() {
@@ -21,6 +22,7 @@ class SplashScreenActivity : BaseActivity() {
         checkReqPermission()
     }
 
+    @SuppressLint("NewApi")
     private fun checkReqPermission(){
         if(ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)!=PackageManager.PERMISSION_GRANTED){
             showLoader("Initialising...")
@@ -58,7 +60,7 @@ class SplashScreenActivity : BaseActivity() {
         showLoader("Initialising...")
         Handler().postDelayed({
             hideLoader()
-            val intent = Intent(this, WelcomeScreenActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
         },1000)

@@ -3,12 +3,11 @@ package com.cleantool.indiacleantool.dependencyinjection.modules
 import androidx.room.Room
 import com.cleantool.indiacleantool.appmodules.dashboard.data.DashboardApi
 import com.cleantool.indiacleantool.appmodules.dashboard.history.DashboardHistoryRepository
-import com.cleantool.indiacleantool.appmodules.login.repository.LoginRepository
 import com.cleantool.indiacleantool.appmodules.login.service.LoginService
 import com.cleantool.indiacleantool.appmodules.servicebooking.data.BookServiceApi
 import com.cleantool.indiacleantool.appmodules.servicebooking.data.BookServiceRepository
-import com.cleantool.indiacleantool.appmodules.serviceprovider.data.ServiceProviderCompanyRespository
 import com.cleantool.indiacleantool.appmodules.serviceprovider.data.ServiceProviderCompanyApi
+import com.cleantool.indiacleantool.appmodules.serviceprovider.data.ServiceProviderCompanyRespository
 import com.cleantool.indiacleantool.common.Preference
 import com.cleantool.indiacleantool.common.ServiceIndiaApplication
 import com.cleantool.indiacleantool.common.ServiceUrls

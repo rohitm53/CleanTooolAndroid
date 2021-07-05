@@ -1,250 +1,264 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-  >
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+
+        <variable
+            name="viewmodal"
+            type="com.cleantool.indiacleantool.appmodules.signup.SignUpViewModal" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/login_bg">
+        android:layout_height="wrap_content"
+        android:background="@color/black_bg">
 
-        <ImageView
-            android:id="@+id/iv_logo"
-            android:layout_width="@dimen/signup_logo_dimen"
-            android:layout_height="@dimen/signup_logo_dimen"
-            android:contentDescription="@string/app_name"
-            android:scaleType="fitXY"
-            android:src="@drawable/app_logo"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.050000012" />
-
-        <TextView
-            android:id="@+id/tv_welcome_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_20"
-            android:layout_marginTop="@dimen/margin_10"
-            android:layout_marginEnd="@dimen/margin_20"
-            android:fontFamily="@font/worksans_bold"
-            android:text="@string/join_us"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_first_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_20"
-            android:layout_marginTop="@dimen/margin_16"
-            android:layout_marginEnd="8dp"
-            android:backgroundTint="@color/white"
-            android:focusableInTouchMode="true"
-            android:fontFamily="@font/worksans_bold"
-            android:hint="@string/first_name"
-            android:imeOptions="actionDone"
-            android:inputType="text"
-            android:paddingStart="@dimen/margin_5"
-            android:singleLine="true"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="@dimen/text_14sp"
-            app:layout_constraintEnd_toStartOf="@+id/ed_last_name"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_welcome_back" />
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_last_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="20dp"
-            android:backgroundTint="@color/white"
-            android:focusableInTouchMode="true"
-            android:fontFamily="@font/worksans_bold"
-            android:hint="@string/last_name"
-            android:imeOptions="actionDone"
-            android:inputType="text"
-            android:paddingStart="@dimen/margin_5"
-            android:singleLine="true"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="@dimen/text_14sp"
-            app:layout_constraintBottom_toBottomOf="@id/ed_first_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/ed_first_name"
-            app:layout_constraintTop_toTopOf="@id/ed_first_name" />
-
-        <TextView
-            android:id="@+id/tv_dob"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/margin_40"
-            android:layout_marginStart="@dimen/margin_20"
-            android:layout_marginTop="@dimen/margin_20"
-            android:layout_marginEnd="@dimen/margin_20"
-            android:fontFamily="@font/worksans_bold"
-            android:gravity="start|bottom"
-            android:paddingStart="5dp"
-            android:paddingBottom="8dp"
-            android:text="@string/dob"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ed_first_name" />
-
-        <View
-            android:id="@+id/view_line_tvdob"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="0.1dp"
-            android:layout_marginEnd="4dp"
-            android:background="@color/white"
-            app:layout_constraintEnd_toEndOf="@id/tv_dob"
-            app:layout_constraintStart_toStartOf="@id/tv_dob"
-            app:layout_constraintTop_toBottomOf="@id/tv_dob" />
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_mobile"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_20"
-            android:layout_marginTop="@dimen/margin_20"
-            android:layout_marginRight="@dimen/margin_20"
-            android:backgroundTint="@color/white"
-            android:focusableInTouchMode="true"
-            android:fontFamily="@font/worksans_bold"
-            android:hint="@string/mobile"
-            android:imeOptions="actionDone"
-            android:inputType="textEmailAddress"
-            android:paddingStart="@dimen/margin_5"
-            android:singleLine="true"
-            android:text=""
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="@dimen/text_14sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view_line_tvdob" />
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_email"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_20"
-            android:layout_marginTop="@dimen/margin_20"
-            android:layout_marginEnd="@dimen/margin_20"
-            android:backgroundTint="@color/white"
-            android:focusableInTouchMode="true"
-            android:fontFamily="@font/worksans_bold"
-            android:hint="@string/email"
-            android:imeOptions="actionDone"
-            android:inputType="textEmailAddress"
-            android:paddingStart="@dimen/margin_5"
-            android:singleLine="true"
-            android:text=""
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="@dimen/text_14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ed_mobile" />
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_address"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_20"
-            android:layout_marginTop="@dimen/margin_20"
-            android:layout_marginEnd="@dimen/margin_20"
-            android:autofillHints="@string/billing_address"
-            android:backgroundTint="@color/white"
-            android:focusableInTouchMode="true"
-            android:fontFamily="@font/worksans_bold"
-            android:hint="@string/billing_address"
-            android:inputType="textMultiLine"
-            android:paddingStart="@dimen/margin_5"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="@dimen/text_14sp"
-            app:layout_constraintBottom_toTopOf="@+id/ed_password"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ed_email" />
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_20"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="@dimen/margin_20"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/worksans_bold"
-            android:hint="@string/password"
-            android:imeOptions="actionDone"
-            android:inputType="textPassword"
-            android:singleLine="true"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="@dimen/text_14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ed_address" />
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_confirm_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_20"
-            android:layout_marginTop="@dimen/margin_20"
-            android:layout_marginEnd="@dimen/margin_20"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/worksans_bold"
-            android:hint="@string/confirm_password"
-            android:imeOptions="actionDone"
-            android:inputType="textPassword"
-            android:maxLength="18"
-            android:paddingStart="@dimen/margin_5"
-            android:singleLine="true"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="@dimen/text_14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ed_password" />
-
-        <Button
-            android:id="@+id/btn_sign_up"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/margin_40"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/rounded_bg_secondary"
-            android:fontFamily="@font/worksans_bold"
-            android:gravity="center"
-            android:paddingStart="@dimen/margin_50"
-            android:paddingEnd="@dimen/margin_50"
-            android:text="@string/sign_up"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ed_confirm_password"
-            app:layout_constraintVertical_bias="0.0" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_height="match_parent">
 
 
-</ScrollView>
+            <TextView
+                android:id="@+id/tv_welcome_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_30"
+                android:fontFamily="@font/worksans_medium"
+                android:text="@string/register"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_20sp"
+                app:layout_constraintBottom_toTopOf="@+id/ll_register_"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.11" />
+
+            <LinearLayout
+                android:id="@+id/ll_register_"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/top_half_rounded_border_white"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_first_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_8ssp"
+                    android:layout_marginTop="@dimen/_18ssp"
+                    android:layout_marginRight="@dimen/_8ssp"
+                    android:layout_marginBottom="@dimen/_8ssp"
+                    android:background="@drawable/rounded_border_gray"
+                    android:focusableInTouchMode="true"
+                    android:fontFamily="@font/worksans_medium"
+                    android:hint="@string/first_name"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:padding="@dimen/_9sdp"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="@dimen/text_14sp"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_welcome_back" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_last_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8ssp"
+                    android:background="@drawable/rounded_border_gray"
+                    android:focusableInTouchMode="true"
+                    android:fontFamily="@font/worksans_medium"
+                    android:hint="@string/last_name"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:padding="@dimen/_9sdp"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="@dimen/text_14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/ed_first_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/ed_first_name"
+                    app:layout_constraintTop_toTopOf="@id/ed_first_name" />
+
+                <TextView
+                    android:id="@+id/tv_dob"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8ssp"
+                    android:background="@drawable/rounded_border_gray"
+                    android:fontFamily="@font/worksans_medium"
+                    android:gravity="start|bottom"
+                    android:padding="@dimen/_9sdp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/dob"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ed_first_name" />
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8ssp"
+                    android:background="@drawable/rounded_border_gray"
+                    android:focusableInTouchMode="true"
+                    android:fontFamily="@font/worksans_medium"
+                    android:hint="@string/mobile"
+                    android:imeOptions="actionDone"
+                    android:inputType="textEmailAddress"
+                    android:padding="@dimen/_9sdp"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="@dimen/text_14sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_dob" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8ssp"
+                    android:background="@drawable/rounded_border_gray"
+                    android:focusableInTouchMode="true"
+                    android:fontFamily="@font/worksans_medium"
+                    android:hint="@string/email"
+                    android:imeOptions="actionDone"
+                    android:inputType="textEmailAddress"
+                    android:padding="@dimen/_9sdp"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="@dimen/text_14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ed_mobile" />
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8ssp"
+                    android:background="@drawable/rounded_border_gray"
+                    android:drawableRight="@drawable/ic_eye"
+                    android:fontFamily="@font/worksans_medium"
+                    android:hint="@string/password"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:padding="@dimen/_9sdp"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="@dimen/text_14sp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ed_email" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_confirm_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8ssp"
+                    android:background="@drawable/rounded_border_gray"
+                    android:drawableRight="@drawable/ic_eye"
+                    android:fontFamily="@font/worksans_medium"
+                    android:hint="@string/confirm_password"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:maxLength="18"
+                    android:padding="@dimen/_9sdp"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="@dimen/text_14sp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ed_password" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8ssp"
+                    android:autofillHints="@string/billing_address"
+                    android:background="@drawable/rounded_border_gray"
+                    android:focusableInTouchMode="true"
+                    android:fontFamily="@font/worksans_medium"
+                    android:hint="@string/billing_address"
+                    android:inputType="textMultiLine"
+                    android:minLines="4"
+                    android:padding="@dimen/_9sdp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="@dimen/text_14sp"
+                    app:layout_constraintBottom_toTopOf="@+id/ll_register"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ed_confirm_password" />
+
+                <LinearLayout
+                    android:id="@+id/ll_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/rounded_fill_green"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ed_address"
+                    app:layout_constraintVertical_bias="0.0">
+
+
+                    <Button
+                        android:id="@+id/btn_sign_up"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:fontFamily="@font/worksans_medium"
+                        android:gravity="center_vertical"
+                        android:onClick="@{()-> viewmodal.register()}"
+                        android:padding="@dimen/_8sdp"
+                        android:text="@string/register"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_13ssp" />
+
+                    <ImageButton
+                        android:id="@+id/btn_signin_img"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/rounded_bg_dark_gray"
+                        android:onClick="@{()-> viewmodal.register()}"
+                        android:padding="@dimen/_8sdp"
+                        android:src="@drawable/ic_arrow" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>
+

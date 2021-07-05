@@ -21,7 +21,7 @@ class CustomServiceGridDialog(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
-        setContentView(R.layout.dialog_services_grid)
+        setContentView(R.layout.activity_service)
 
         rv_services.apply {
             adapter = CustomServiceGridAdapter(listService,serviceSelectorListner)

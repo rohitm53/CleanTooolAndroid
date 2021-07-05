@@ -1,0 +1,30 @@
+{
+    "serviceProviderCompanyDetails": [
+        {
+            "company": {
+                "id": 1,
+                "companyCode": "WINIT",
+                "companyName": "WINIT",
+                "address": "Kondapur",
+                "email": "winit@gmail.com",
+                "latitude": 17.456679193688483,
+                "longitude":  78.3680053879948
+            },
+            "availableEmployeeCount": 1,
+            "timeSlots": []
+        },
+        {
+            "company": {
+                "id": 2,
+                "companyCode": "Way2Online",
+                "companyName": "Way2Online",
+                "address": "Jubilee hills",
+                "email": "way2online@gmail.com",
+                "latitude": 17.430691383888146,
+                "longitude": 78.41971809777448
+            },
+            "availableEmployeeCount": 1,
+            "timeSlots": []
+        }
+    ]
+}

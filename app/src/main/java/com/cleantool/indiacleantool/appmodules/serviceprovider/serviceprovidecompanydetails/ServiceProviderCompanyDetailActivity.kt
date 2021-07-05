@@ -7,7 +7,6 @@ import android.content.res.Resources
 import androidx.activity.viewModels
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.appmodules.commonmodule.BaseActivity
 import com.cleantool.indiacleantool.appmodules.servicebooking.BookServiceActivity
@@ -51,17 +50,17 @@ class ServiceProviderCompanyDetailActivity : BaseActivity(), CompanyDetailsListn
         mapFragment.getMapAsync(this)
 
         tv_company_name.text= serviceProviderCompanyDetail.company.companyName
-        tv_company_address.text= serviceProviderCompanyDetail.company.companyName
-        tv_avail_peron.text = serviceProviderCompanyDetail.availableEmployeeCount.toString()
-
-        rv_time_slot.apply {
-            adapter = CompanyTimeSlotsAdapter(serviceProviderCompanyDetail.timeSlots,this@ServiceProviderCompanyDetailActivity)
-            layoutManager = LinearLayoutManager(this@ServiceProviderCompanyDetailActivity)
-        }
-
-        btn_continue.setOnClickListener {
-            moveToConfirmationScreen()
-        }
+//        tv_company_address.text= serviceProviderCompanyDetail.company.companyName
+//        tv_avail_peron.text = serviceProviderCompanyDetail.availableEmployeeCount.toString()
+//
+//        rv_time_slot.apply {
+//            adapter = CompanyTimeSlotsAdapter(serviceProviderCompanyDetail.timeSlots,this@ServiceProviderCompanyDetailActivity)
+//            layoutManager = LinearLayoutManager(this@ServiceProviderCompanyDetailActivity)
+//        }
+//
+//        btn_continue.setOnClickListener {
+//            moveToConfirmationScreen()
+//        }
     }
 
     private fun setMapFrameHeight(){

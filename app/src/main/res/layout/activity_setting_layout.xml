@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_bg">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:backgroundTint="@color/black_bg"
+            android:fontFamily="@font/worksans_bold"
+            android:onClick="@{()-> viewmodal.authenticateUser()}"
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/back_arrow_icon"
+            app:layout_constraintBottom_toTopOf="@+id/ll_register_"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/ll_register_"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/top_half_rounded_border_light_white"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/tv_settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_8ssp"
+                android:layout_marginTop="@dimen/_18ssp"
+                android:layout_marginRight="@dimen/_8ssp"
+                android:layout_marginBottom="@dimen/_8ssp"
+                android:focusableInTouchMode="true"
+                android:fontFamily="@font/worksans_bold"
+                android:singleLine="true"
+                android:text="Settings"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_18sp"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E9E9E9" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/right_arrow"
+                    android:focusableInTouchMode="true"
+                    android:fontFamily="@font/worksans_medium"
+                    android:padding="@dimen/_10sdp"
+                    android:singleLine="true"
+                    android:text="Profile"
+                    android:textColor="@color/black_new"
+                    android:textSize="@dimen/text_14sp"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E9E9E9" />
+
+                <TextView
+                    android:id="@+id/tv_my_bookings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/right_arrow"
+                    android:focusableInTouchMode="true"
+                    android:fontFamily="@font/worksans_medium"
+                    android:padding="@dimen/_10sdp"
+                    android:singleLine="true"
+                    android:text="My Bookings"
+                    android:textColor="@color/black_new"
+                    android:textSize="@dimen/text_14sp"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E9E9E9" />
+
+                <TextView
+                    android:id="@+id/tv_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/right_arrow"
+                    android:focusableInTouchMode="true"
+                    android:fontFamily="@font/worksans_medium"
+                    android:padding="@dimen/_10sdp"
+                    android:singleLine="true"
+                    android:text="Address"
+                    android:textColor="@color/black_new"
+                    android:textSize="@dimen/text_14sp"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E9E9E9" />
+
+                <TextView
+                    android:id="@+id/tv_payment_settings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/right_arrow"
+                    android:focusableInTouchMode="true"
+                    android:fontFamily="@font/worksans_medium"
+                    android:padding="@dimen/_10sdp"
+                    android:singleLine="true"
+                    android:text="Payment Settings"
+                    android:textColor="@color/black_new"
+                    android:textSize="@dimen/text_14sp"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E9E9E9" />
+
+                <TextView
+                    android:id="@+id/tv_about_us"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/right_arrow"
+                    android:focusableInTouchMode="true"
+                    android:fontFamily="@font/worksans_medium"
+                    android:padding="@dimen/_10sdp"
+                    android:singleLine="true"
+                    android:text="About Us"
+                    android:textColor="@color/black_new"
+                    android:textSize="@dimen/text_14sp"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E9E9E9" />
+
+                <TextView
+                    android:id="@+id/tv_help"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/right_arrow"
+                    android:focusableInTouchMode="true"
+                    android:fontFamily="@font/worksans_medium"
+                    android:padding="@dimen/_10sdp"
+                    android:singleLine="true"
+                    android:text="Help"
+                    android:textColor="@color/black_new"
+                    android:textSize="@dimen/text_14sp"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_8ssp"
+                android:layout_marginTop="@dimen/_18ssp"
+                android:layout_marginRight="@dimen/_8ssp"
+                android:layout_marginBottom="@dimen/_8ssp"
+                android:focusableInTouchMode="true"
+                android:fontFamily="@font/worksans_medium"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Logout"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_16sp"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

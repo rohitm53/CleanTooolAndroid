@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/welcome_screen_gradient_bg"
+    android:background="@drawable/splash"
     tools:context=".appmodules.splashscreen.SplashScreenActivity">
 
     <ImageView
@@ -14,6 +14,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:src="@drawable/app_logo"
         android:scaleType="fitXY"
+        android:visibility="gone"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

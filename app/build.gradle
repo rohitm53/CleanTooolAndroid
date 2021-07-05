@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.cleantool.indiacleantool"
-        minSdkVersion 26
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -32,6 +32,9 @@ android {
     }
     buildFeatures {
         dataBinding true
+    }
+    kapt {
+        generateStubs = true
     }
 }
 def lifecycle_version = "2.2.0"
@@ -75,7 +78,7 @@ dependencies {
 
 
     //Dagger
-    implementation "com.google.dagger:dagger-android:$daggerVersion"
+    implementation 'com.google.dagger:dagger-android:2.35.1'
     implementation "com.google.dagger:dagger-android-support:$daggerVersion"
     kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
@@ -92,7 +95,8 @@ dependencies {
     //others
     implementation 'com.romainpiel.shimmer:library:1.4.0@aar'
 
-
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.intuit.ssp:ssp-android:1.0.6'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
