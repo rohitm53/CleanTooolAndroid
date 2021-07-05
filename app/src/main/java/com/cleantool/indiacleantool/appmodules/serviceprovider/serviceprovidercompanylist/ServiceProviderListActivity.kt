@@ -31,7 +31,7 @@ class ServiceProviderListActivity : BaseActivity() , ServiceProviderListner {
         serviceType = intent.getStringExtra(IntentKey.ServiceType)!!
 
 
-        viewModal.getServiceProvideCompanyDetails(this,serviceCode)
+        viewModal.getServiceProvideCompanyDetails(serviceCode)
         viewModal.statusLiveData.observe(this,{
 
             when(it.status){

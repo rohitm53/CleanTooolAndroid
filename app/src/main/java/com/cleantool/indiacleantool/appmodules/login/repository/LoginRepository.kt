@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 class LoginRepository @Inject constructor( var loginService : LoginService) {
 
-    suspend fun authenticatUser(loginRequest: LoginRequest): NetworkResultWrapper<LoginResponse> {
+    suspend fun authenticateUser(loginRequest: LoginRequest): NetworkResultWrapper<LoginResponse> {
         return safeApiCall { loginService.authenticateUser(loginRequest) }
     }
 

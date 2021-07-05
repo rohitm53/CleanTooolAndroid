@@ -4,7 +4,7 @@ import android.util.Log.d
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.cleantool.indiacleantool.appmodules.signup.service.SignUpRepository
+import com.cleantool.indiacleantool.appmodules.signup.repository.SignUpRepository
 import com.cleantool.indiacleantool.common.Preference
 import com.cleantool.indiacleantool.common.ServiceIndiaApplication
 import com.cleantool.indiacleantool.models.networkmodels.commosn.NetworkResultWrapper

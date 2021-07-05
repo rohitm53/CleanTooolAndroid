@@ -1,5 +1,6 @@
-package com.cleantool.indiacleantool.appmodules.signup.service
+package com.cleantool.indiacleantool.appmodules.signup.repository
 
+import com.cleantool.indiacleantool.appmodules.signup.service.SignUpService
 import com.cleantool.indiacleantool.models.networkmodels.commosn.NetworkResultWrapper
 import com.cleantool.indiacleantool.models.networkmodels.signup.SignUpRequest
 import com.cleantool.indiacleantool.models.networkmodels.signup.SignUpResponse

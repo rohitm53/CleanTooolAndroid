@@ -17,8 +17,8 @@ suspend fun<T> safeApiCall(apiCall: suspend () -> T ) : NetworkResultWrapper<T> 
 
             is HttpException -> {
                 val code = throwable.code()
-                val erroResponse = convertErrorBody(throwable)
-                NetworkResultWrapper.GenericError(code,erroResponse)
+                val errorResponse = convertErrorBody(throwable)
+                NetworkResultWrapper.GenericError(code,errorResponse)
             }
 
             else -> {

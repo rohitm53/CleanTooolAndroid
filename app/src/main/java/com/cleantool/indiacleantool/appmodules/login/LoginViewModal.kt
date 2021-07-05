@@ -32,7 +32,7 @@ class LoginViewModal : ViewModel() {
 
         viewModelScope.launch {
             liveDataStatus.postValue(LoginStatus(SHOW_LOADER,"Loggin in"))
-            val networkResponse = loginRepository.authenticatUser(loginRequest)
+            val networkResponse = loginRepository.authenticateUser(loginRequest)
             when(networkResponse){
                 is NetworkResultWrapper.Success -> {
                     val loginResponse = networkResponse.value

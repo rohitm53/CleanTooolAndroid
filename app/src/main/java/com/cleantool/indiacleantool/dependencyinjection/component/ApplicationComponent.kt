@@ -8,7 +8,7 @@ import com.cleantool.indiacleantool.appmodules.serviceprovider.data.ServiceProvi
 import com.cleantool.indiacleantool.appmodules.serviceprovider.serviceprovidecompanydetails.ServiceProviderCompanyDetailViewModel
 import com.cleantool.indiacleantool.appmodules.serviceprovider.serviceprovidercompanylist.ServiceProviderCompanyListViewModal
 import com.cleantool.indiacleantool.appmodules.signup.SignUpViewModal
-import com.cleantool.indiacleantool.appmodules.signup.service.SignUpRepository
+import com.cleantool.indiacleantool.appmodules.signup.repository.SignUpRepository
 import com.cleantool.indiacleantool.dependencyinjection.modules.ApplicationModules
 import dagger.Component
 import javax.inject.Singleton

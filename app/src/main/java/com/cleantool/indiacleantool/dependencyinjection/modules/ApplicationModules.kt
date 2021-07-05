@@ -8,6 +8,8 @@ import com.cleantool.indiacleantool.appmodules.servicebooking.data.BookServiceAp
 import com.cleantool.indiacleantool.appmodules.servicebooking.data.BookServiceRepository
 import com.cleantool.indiacleantool.appmodules.serviceprovider.data.ServiceProviderCompanyApi
 import com.cleantool.indiacleantool.appmodules.serviceprovider.data.ServiceProviderCompanyRespository
+import com.cleantool.indiacleantool.appmodules.signup.repository.SignUpRepository
+import com.cleantool.indiacleantool.appmodules.signup.service.SignUpService
 import com.cleantool.indiacleantool.common.Preference
 import com.cleantool.indiacleantool.common.ServiceIndiaApplication
 import com.cleantool.indiacleantool.common.ServiceUrls
@@ -60,6 +62,18 @@ import javax.inject.Singleton
         return Preference(serviceIndiaApplication)
     }
 
+    @Singleton
+    @Provides
+    fun providesSignUpService(retrofit: Retrofit) : SignUpService {
+        return retrofit.create(SignUpService::class.java)
+    }
+
+
+    @Singleton
+    @Provides
+    fun provideSignUpRepository(signUpService: SignUpService) : SignUpRepository{
+        return SignUpRepository(signUpService);
+    }
 
 
     @Singleton
