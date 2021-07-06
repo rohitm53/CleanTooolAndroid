@@ -6,8 +6,8 @@ import androidx.lifecycle.viewModelScope
 import com.cleantool.indiacleantool.appmodules.servicebooking.data.BookServiceRepository
 import com.cleantool.indiacleantool.common.ServiceIndiaApplication
 import com.cleantool.indiacleantool.models.networkmodels.servicerequest.ServiceRequest
-import com.cleantool.indiacleantool.models.networkmodels.commosn.NetworkResultWrapper
-import com.cleantool.indiacleantool.models.networkmodels.serviceprovider.ServiceProviderCompanyDetail
+import com.cleantool.indiacleantool.models.networkmodels.common.NetworkResultWrapper
+import com.cleantool.indiacleantool.models.networkmodels.serviceprovider.ServiceProviderCompany
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -23,7 +23,7 @@ class BookServiceViewModal : ViewModel() {
 
      val statusLiveData = MutableLiveData<Status>()
 
-     lateinit var serviceProviderCompanyDetail: ServiceProviderCompanyDetail
+     lateinit var serviceProviderCompany: ServiceProviderCompany
      lateinit var serviceRequest: ServiceRequest
      var serviceCode:String = ""
 
@@ -38,7 +38,7 @@ class BookServiceViewModal : ViewModel() {
                     val serviceResponse = response.value
                     serviceRequest.serviceReqCode=serviceResponse.serviceReqCode
                     serviceRequest.scheduled=serviceResponse.scheduled
-                    serviceRequest.companyName=serviceProviderCompanyDetail.company.companyName
+                    serviceRequest.companyName=serviceProviderCompany.company.companyName
                     statusLiveData.postValue(Status(MOVE_TO_CONFIRMATION,serviceRequest))
                }
 

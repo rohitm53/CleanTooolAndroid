@@ -13,7 +13,7 @@ import com.cleantool.indiacleantool.appmodules.servicebooking.BookServiceActivit
 import com.cleantool.indiacleantool.appmodules.serviceprovider.listner.CompanyDetailsListner
 import com.cleantool.indiacleantool.common.IntentKey
 import com.cleantool.indiacleantool.models.networkmodels.serviceprovider.Company
-import com.cleantool.indiacleantool.models.networkmodels.serviceprovider.ServiceProviderCompanyDetail
+import com.cleantool.indiacleantool.models.networkmodels.serviceprovider.ServiceProviderCompany
 import com.cleantool.indiacleantool.models.networkmodels.serviceprovider.TimeSlot
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -30,7 +30,7 @@ class ServiceProviderCompanyDetailActivity : BaseActivity(), CompanyDetailsListn
 
     val viewModel: ServiceProviderCompanyDetailViewModel by viewModels()
 
-    private lateinit var serviceProviderCompanyDetail: ServiceProviderCompanyDetail
+    private lateinit var serviceProviderCompany: ServiceProviderCompany
     private  var googleMap: GoogleMap?=null
 
     override fun initialize() {
@@ -38,18 +38,18 @@ class ServiceProviderCompanyDetailActivity : BaseActivity(), CompanyDetailsListn
         setMapFrameHeight()
 
 
-        serviceProviderCompanyDetail = intent.extras?.get(IntentKey.ServiceProvideDetails) as ServiceProviderCompanyDetail
+        serviceProviderCompany = intent.extras?.get(IntentKey.ServiceProvideDetails) as ServiceProviderCompany
         viewModel.serviceCode = intent.getStringExtra(IntentKey.ServiceCode)!!
         viewModel.serviceType = intent.getStringExtra(IntentKey.ServiceType)!!
 
-        viewModel.company = serviceProviderCompanyDetail.company
+        viewModel.company = serviceProviderCompany.company
 
         viewModel.assigneServiceName()
 
         val mapFragment = supportFragmentManager.findFragmentById(R.id.fr_google_map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        tv_company_name.text= serviceProviderCompanyDetail.company.companyName
+        tv_company_name.text= serviceProviderCompany.company.companyName
 //        tv_company_address.text= serviceProviderCompanyDetail.company.companyName
 //        tv_avail_peron.text = serviceProviderCompanyDetail.availableEmployeeCount.toString()
 //
@@ -86,7 +86,7 @@ class ServiceProviderCompanyDetailActivity : BaseActivity(), CompanyDetailsListn
         }
         googleMap?.isMyLocationEnabled=true
 
-        addMarker(serviceProviderCompanyDetail.company)
+        addMarker(serviceProviderCompany.company)
     }
 
     private fun addMarker(company: Company){
@@ -118,7 +118,7 @@ class ServiceProviderCompanyDetailActivity : BaseActivity(), CompanyDetailsListn
         }else{
             val intent=Intent(this, BookServiceActivity::class.java).apply {
                 putExtra(IntentKey.ServiceRequest,viewModel.generateServiceRequest() as Serializable)
-                putExtra(IntentKey.ServiceProvideDetails,serviceProviderCompanyDetail as Serializable)
+                putExtra(IntentKey.ServiceProvideDetails,serviceProviderCompany as Serializable)
             }
             startActivity(intent)
         }

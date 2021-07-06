@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.common.ServiceIndiaApplication
-import com.cleantool.indiacleantool.models.networkmodels.commosn.NetworkResultWrapper
+import com.cleantool.indiacleantool.models.networkmodels.common.NetworkResultWrapper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject

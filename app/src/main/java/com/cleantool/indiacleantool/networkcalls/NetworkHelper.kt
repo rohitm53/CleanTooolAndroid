@@ -1,7 +1,7 @@
 package com.cleantool.indiacleantool.networkcalls
 
 import com.cleantool.indiacleantool.models.networkmodels.common.ErrorResponse
-import com.cleantool.indiacleantool.models.networkmodels.commosn.NetworkResultWrapper
+import com.cleantool.indiacleantool.models.networkmodels.common.NetworkResultWrapper
 import com.squareup.moshi.Moshi
 import retrofit2.HttpException
 import java.io.IOException
@@ -12,7 +12,6 @@ suspend fun<T> safeApiCall(apiCall: suspend () -> T ) : NetworkResultWrapper<T> 
         NetworkResultWrapper.Success(apiCall.invoke())
     }catch (throwable : Throwable){
         when(throwable) {
-
             is IOException -> NetworkResultWrapper.NetworkError
 
             is HttpException -> {

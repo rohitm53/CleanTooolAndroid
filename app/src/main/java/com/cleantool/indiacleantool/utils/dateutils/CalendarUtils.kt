@@ -23,10 +23,7 @@ class CalendarUtils {
         @SuppressLint("NewApi")
         fun getCurrentDateInStandFormat(): String? {
             return LocalDate.now().format(
-                    DateTimeFormatter.ofPattern(
-                            STANDARD_DATE_FORMAT,
-                            Locale.ENGLISH
-                    )
+                    DateTimeFormatter.ofPattern(STANDARD_DATE_FORMAT, Locale.ENGLISH)
             )
         }
 

@@ -20,13 +20,12 @@
 
 
         <ImageButton
-            android:id="@+id/btn_signin_img"
+            android:id="@+id/btn_back"
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
             android:layout_marginTop="@dimen/_15sdp"
             android:backgroundTint="@color/black_bg"
             android:fontFamily="@font/worksans_bold"
-            android:onClick="@{()-> viewmodal.authenticateUser()}"
             android:src="@drawable/back_arrow_icon" />
 
         <TextView

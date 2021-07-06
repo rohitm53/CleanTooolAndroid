@@ -12,7 +12,7 @@ import com.cleantool.indiacleantool.appmodules.serviceprovider.serviceproviderco
 import com.cleantool.indiacleantool.appmodules.serviceprovider.serviceprovidercompanylist.ServiceProviderCompanyListViewModal.Companion.SHOW_LOADER
 import com.cleantool.indiacleantool.appmodules.serviceprovider.serviceprovidercompanylist.ServiceProviderCompanyListViewModal.Companion.SUCCESS
 import com.cleantool.indiacleantool.common.IntentKey
-import com.cleantool.indiacleantool.models.networkmodels.serviceprovider.ServiceProviderCompanyDetail
+import com.cleantool.indiacleantool.models.networkmodels.serviceprovider.ServiceProviderCompany
 import kotlinx.android.synthetic.main.activity_service_provider_list.*
 import kotlinx.android.synthetic.main.base_activity.*
 import java.io.Serializable
@@ -46,7 +46,7 @@ class ServiceProviderListActivity : BaseActivity() , ServiceProviderListner {
 
                SUCCESS -> {
                    hideLoader()
-                   updateList(it.data as List<ServiceProviderCompanyDetail>)
+                   updateList(it.data as List<ServiceProviderCompany>)
                }
 
                 ERROR -> {
@@ -57,17 +57,17 @@ class ServiceProviderListActivity : BaseActivity() , ServiceProviderListner {
         })
     }
 
-    private fun updateList(listServiceProvider : List<ServiceProviderCompanyDetail>){
+    private fun updateList(listServiceProvider : List<ServiceProviderCompany>){
         rv_companies.apply {
             adapter = ServiceProviderCompanyAdapter(listServiceProvider,this@ServiceProviderListActivity)
             layoutManager = LinearLayoutManager(context)
         }
     }
 
-    override fun moveToServiceDetails(serviceProviderCompanyDetail: ServiceProviderCompanyDetail) {
+    override fun moveToServiceDetails(serviceProviderCompany: ServiceProviderCompany) {
         val intent = Intent(this, ServiceProviderCompanyDetailActivity::class.java)
             .apply {
-                putExtra(IntentKey.ServiceProvideDetails,serviceProviderCompanyDetail as Serializable)
+                putExtra(IntentKey.ServiceProvideDetails,serviceProviderCompany as Serializable)
                 putExtra(IntentKey.ServiceCode,serviceCode)
                 putExtra(IntentKey.ServiceType,serviceType)
             }

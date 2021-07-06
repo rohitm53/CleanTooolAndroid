@@ -10,7 +10,9 @@ import com.cleantool.indiacleantool.appmodules.dashboard.settings.ServiceSelecto
 import com.cleantool.indiacleantool.customdialog.CustomServiceGridAdapter
 import com.cleantool.indiacleantool.models.services.Service
 import com.cleantool.indiacleantool.utils.recylerviewitemdecoration.SpacesItemDecoration
+import kotlinx.android.synthetic.main.dialog_service_grid.*
 import kotlinx.android.synthetic.main.dialog_services_grid.*
+import kotlinx.android.synthetic.main.dialog_services_grid.rv_services
 
 class CustomServiceGridDialog(
     private var mContext: Context,
@@ -21,13 +23,16 @@ class CustomServiceGridDialog(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
-        setContentView(R.layout.activity_service)
+        setContentView(R.layout.dialog_service_grid)
 
         rv_services.apply {
             adapter = CustomServiceGridAdapter(listService,serviceSelectorListner)
             layoutManager  = GridLayoutManager(mContext,2)
             addItemDecoration(SpacesItemDecoration(10))
         }
+
+        btn_back.setOnClickListener { dismiss() }
+
     }
 
 }

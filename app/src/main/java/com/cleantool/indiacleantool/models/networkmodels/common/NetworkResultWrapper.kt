@@ -1,6 +1,4 @@
-package com.cleantool.indiacleantool.models.networkmodels.commosn
-
-import com.cleantool.indiacleantool.models.networkmodels.common.ErrorResponse
+package com.cleantool.indiacleantool.models.networkmodels.common
 
 sealed class NetworkResultWrapper<out T> {
 

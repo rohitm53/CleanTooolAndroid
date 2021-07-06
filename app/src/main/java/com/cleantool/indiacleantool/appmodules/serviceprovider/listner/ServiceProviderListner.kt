@@ -1,8 +1,8 @@
 package com.cleantool.indiacleantool.appmodules.serviceprovider.listner
 
-import com.cleantool.indiacleantool.models.networkmodels.serviceprovider.ServiceProviderCompanyDetail
+import com.cleantool.indiacleantool.models.networkmodels.serviceprovider.ServiceProviderCompany
 
 interface ServiceProviderListner {
 
-    fun moveToServiceDetails(serviceProviderCompanyDetail: ServiceProviderCompanyDetail)
+    fun moveToServiceDetails(serviceProviderCompany: ServiceProviderCompany)
 }

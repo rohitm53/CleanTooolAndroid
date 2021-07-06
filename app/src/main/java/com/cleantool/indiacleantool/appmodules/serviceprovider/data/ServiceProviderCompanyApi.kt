@@ -5,11 +5,14 @@ import com.cleantool.indiacleantool.models.networkmodels.serviceprovider.Service
 import retrofit2.http.GET
 import retrofit2.http.HeaderMap
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ServiceProviderCompanyApi {
 
     @GET(ServiceUrls.ServiceProviderUrl)
     suspend fun getServiceProviderDetails(
         @HeaderMap headers : Map<String,String>,
-        @Path("service_code") service_code:String) : ServiceProviderDetailResponse
+        @Query("service_code") serviceCode : String,
+        @Query("date") date : String?
+    ) : ServiceProviderDetailResponse
 }

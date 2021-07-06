@@ -14,13 +14,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/btn_signin_img"
+            android:id="@+id/btn_back"
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
             android:layout_centerVertical="true"
             android:backgroundTint="@color/black_bg"
             android:fontFamily="@font/worksans_bold"
-            android:onClick="@{()-> viewmodal.authenticateUser()}"
             android:padding="@dimen/_8sdp"
             android:src="@drawable/back_arrow_icon" />
 
@@ -31,7 +30,7 @@
             android:layout_marginLeft="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_15sdp"
             android:layout_marginBottom="@dimen/_15sdp"
-            android:layout_toRightOf="@+id/btn_signin_img"
+            android:layout_toRightOf="@+id/btn_back"
             android:src="@drawable/app_clean_service" />
 
     </RelativeLayout>

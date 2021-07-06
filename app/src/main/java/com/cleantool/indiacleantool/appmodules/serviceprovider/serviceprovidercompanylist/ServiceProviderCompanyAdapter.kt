@@ -7,10 +7,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.cleantool.indiacleantool.R
 import com.cleantool.indiacleantool.appmodules.serviceprovider.listner.ServiceProviderListner
-import com.cleantool.indiacleantool.models.networkmodels.serviceprovider.ServiceProviderCompanyDetail
+import com.cleantool.indiacleantool.models.networkmodels.serviceprovider.ServiceProviderCompany
 
 class ServiceProviderCompanyAdapter(
-    private val listServiceProvider : List<ServiceProviderCompanyDetail>,
+    private val listServiceProvider : List<ServiceProviderCompany>,
     private val serviceProviderListner: ServiceProviderListner
 ) : RecyclerView.Adapter<ServiceProviderCompanyAdapter.ViewHolder>()  {
 

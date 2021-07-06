@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.dialog_services_grid.*
 class CustomServiceActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_service)
+        setContentView(R.layout.dialog_service_grid)
 
         rv_services.apply {
 //            adapter = CustomServiceGridAdapter(listService,serviceSelectorListner)

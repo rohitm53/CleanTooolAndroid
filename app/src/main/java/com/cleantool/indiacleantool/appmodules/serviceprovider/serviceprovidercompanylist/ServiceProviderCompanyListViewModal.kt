@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cleantool.indiacleantool.appmodules.serviceprovider.data.ServiceProviderCompanyRespository
 import com.cleantool.indiacleantool.common.ServiceIndiaApplication
-import com.cleantool.indiacleantool.models.networkmodels.commosn.NetworkResultWrapper
+import com.cleantool.indiacleantool.models.networkmodels.common.NetworkResultWrapper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -29,9 +29,7 @@ class ServiceProviderCompanyListViewModal : ViewModel() {
         )
         viewModelScope.launch(Dispatchers.Default) {
 
-            val networkResponse = serviceProviderCompanyRespository.getServiceProviderCompanyDetails(service_code)
-
-            when(networkResponse){
+            when(val networkResponse = serviceProviderCompanyRespository.getServiceProviderCompanyDetails(service_code)){
 
                 is NetworkResultWrapper.Success -> {
 
@@ -41,7 +39,7 @@ class ServiceProviderCompanyListViewModal : ViewModel() {
                             Status(ERROR, serviceProviderResponse.error.errormsg)
                         )
                     }else{
-                        val listCompanyDetails = serviceProviderResponse.serviceProviderCompanyDetails
+                        val listCompanyDetails = serviceProviderResponse.companyDetails
                         statusLiveData.postValue(
                             Status(SUCCESS,listCompanyDetails )
                         )

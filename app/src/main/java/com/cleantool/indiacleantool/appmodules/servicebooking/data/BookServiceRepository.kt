@@ -4,7 +4,7 @@ import com.cleantool.indiacleantool.common.Preference
 import com.cleantool.indiacleantool.database.AppDatabase
 import com.cleantool.indiacleantool.models.networkmodels.servicerequest.ServiceRequest
 import com.cleantool.indiacleantool.models.networkmodels.servicerequest.ServiceResponse
-import com.cleantool.indiacleantool.models.networkmodels.commosn.NetworkResultWrapper
+import com.cleantool.indiacleantool.models.networkmodels.common.NetworkResultWrapper
 import com.cleantool.indiacleantool.networkcalls.safeApiCall
 
 class BookServiceRepository(
@@ -13,7 +13,7 @@ class BookServiceRepository(
     var preference: Preference) {
 
 
-    suspend fun booksService(serviceRequest: ServiceRequest) : NetworkResultWrapper<ServiceResponse>{
+    suspend fun booksService(serviceRequest: ServiceRequest) : NetworkResultWrapper<ServiceResponse> {
 
         val headerMap = HashMap<String,String>()
         headerMap.put("Authorization",preference.getStringValue(Preference.Keys.JsonWebToken))

@@ -28,7 +28,7 @@ class DashboardActivity : BaseActivity() , ServiceTypeSelectorListner {
     override fun initialize() {
 
         layoutInflater.inflate(R.layout.activity_dashboard,ll_body,true)
-        toolbar.visibility= View.GONE;
+        toolbar.visibility= View.GONE
         viewpager.setPageTransformer(ZoomOutPageTransformer())
         viewpager.adapter = DashboardPagerAdapter(this,this)
 
@@ -52,19 +52,19 @@ class DashboardActivity : BaseActivity() , ServiceTypeSelectorListner {
         bottom_navigation_view.setOnNavigationItemSelectedListener {menuItem: MenuItem ->
             return@setOnNavigationItemSelectedListener  when(menuItem.itemId){
                 R.id.menu_home -> {
-                    viewpager.setCurrentItem(0)
+                    viewpager.currentItem = 0
                     true
                 }
                 R.id.menu_search -> {
-                    viewpager.setCurrentItem(1)
+                    viewpager.currentItem = 1
                     true
                 }
                 R.id.menu_history -> {
-                    viewpager.setCurrentItem(2)
+                    viewpager.currentItem = 2
                     true
                 }
                 R.id.menu_settings -> {
-                    viewpager.setCurrentItem(3)
+                    viewpager.currentItem = 3
                     true
                 }
                 else -> false
@@ -75,7 +75,7 @@ class DashboardActivity : BaseActivity() , ServiceTypeSelectorListner {
         if(IsFromConfirmBooking){
            showLoader("")
             Handler().postDelayed({
-                viewpager.setCurrentItem(2)
+                viewpager.currentItem = 2
             },1000)
         }
     }
@@ -92,7 +92,7 @@ class DashboardActivity : BaseActivity() , ServiceTypeSelectorListner {
 
         customServiceGridDialog = CustomServiceGridDialog(
             this,
-            viewModal.hmServices.get(serviceType)!!,
+            viewModal.hmServices[serviceType]!!,
             object : ServiceSelectorListner {
                 override fun moveToProvidingCompanyList(serviceCode: String) {
 
@@ -108,7 +108,7 @@ class DashboardActivity : BaseActivity() , ServiceTypeSelectorListner {
 
         customServiceGridDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         customServiceGridDialog.setCancelable(true)
-        customServiceGridDialog.show();
+        customServiceGridDialog.show()
 
     }
 

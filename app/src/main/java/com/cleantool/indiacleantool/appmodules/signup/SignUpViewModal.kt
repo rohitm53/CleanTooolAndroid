@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.cleantool.indiacleantool.appmodules.signup.repository.SignUpRepository
 import com.cleantool.indiacleantool.common.Preference
 import com.cleantool.indiacleantool.common.ServiceIndiaApplication
-import com.cleantool.indiacleantool.models.networkmodels.commosn.NetworkResultWrapper
+import com.cleantool.indiacleantool.models.networkmodels.common.NetworkResultWrapper
 import com.cleantool.indiacleantool.models.networkmodels.signup.SignUpRequest
 import kotlinx.coroutines.launch
 import javax.inject.Inject

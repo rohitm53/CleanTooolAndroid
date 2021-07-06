@@ -7,7 +7,7 @@ import com.cleantool.indiacleantool.appmodules.bookingconfirmation.BookingConfir
 import com.cleantool.indiacleantool.appmodules.commonmodule.BaseActivity
 import com.cleantool.indiacleantool.common.IntentKey
 import com.cleantool.indiacleantool.models.networkmodels.servicerequest.ServiceRequest
-import com.cleantool.indiacleantool.models.networkmodels.serviceprovider.ServiceProviderCompanyDetail
+import com.cleantool.indiacleantool.models.networkmodels.serviceprovider.ServiceProviderCompany
 import com.cleantool.indiacleantool.utils.dateutils.CalendarUtils
 import kotlinx.android.synthetic.main.activity_book_service.*
 import kotlinx.android.synthetic.main.base_activity.*
@@ -17,23 +17,23 @@ class BookServiceActivity : BaseActivity() {
 
     val viewModal: BookServiceViewModal by viewModels()
 
-    private lateinit var serviceProviderCompanyDetail: ServiceProviderCompanyDetail
+    private lateinit var serviceProviderCompany: ServiceProviderCompany
     private lateinit var serviceRequest: ServiceRequest
 
     override fun initialize() {
         layoutInflater.inflate(R.layout.activity_book_service,ll_body,true)
 
-        serviceProviderCompanyDetail = intent.extras?.get(IntentKey.ServiceProvideDetails) as ServiceProviderCompanyDetail
+        serviceProviderCompany = intent.extras?.get(IntentKey.ServiceProvideDetails) as ServiceProviderCompany
         serviceRequest = intent.extras?.get(IntentKey.ServiceRequest) as ServiceRequest
 
-        viewModal.serviceProviderCompanyDetail=serviceProviderCompanyDetail
+        viewModal.serviceProviderCompany=serviceProviderCompany
         viewModal.serviceRequest=serviceRequest
 
 
         tv_service_name.text = serviceRequest.serviceName
 
-        tv_provider_name.text = serviceProviderCompanyDetail.company.companyName
-        tv_provider_address.text = serviceProviderCompanyDetail.company.address
+        tv_provider_name.text = serviceProviderCompany.company.companyName
+        tv_provider_address.text = serviceProviderCompany.company.address
 
         tv_time_slot.text = CalendarUtils.getTimeInStandFormat(serviceRequest.scheduled)
 

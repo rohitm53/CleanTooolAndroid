@@ -1,5 +1,6 @@
 package com.cleantool.indiacleantool.appmodules.login
 
+import android.util.Log
 import android.util.Log.d
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.cleantool.indiacleantool.appmodules.login.repository.LoginRepository
 import com.cleantool.indiacleantool.common.Preference
 import com.cleantool.indiacleantool.common.ServiceIndiaApplication
-import com.cleantool.indiacleantool.models.networkmodels.commosn.NetworkResultWrapper
+import com.cleantool.indiacleantool.models.networkmodels.common.NetworkResultWrapper
 import com.cleantool.indiacleantool.models.networkmodels.login.LoginRequest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -31,12 +32,11 @@ class LoginViewModal : ViewModel() {
     fun authenticateUser(){
 
         viewModelScope.launch {
-            liveDataStatus.postValue(LoginStatus(SHOW_LOADER,"Loggin in"))
-            val networkResponse = loginRepository.authenticateUser(loginRequest)
-            when(networkResponse){
+            liveDataStatus.postValue(LoginStatus(SHOW_LOADER,"Logging in"))
+            when(val networkResponse = loginRepository.authenticateUser(loginRequest)){
                 is NetworkResultWrapper.Success -> {
                     val loginResponse = networkResponse.value
-                    if(!loginResponse.jwt.isEmpty()){
+                    if(loginResponse.jwt.isNotEmpty()){
                         preference.saveString(Preference.Keys.UserCode,loginRequest.username)
                         preference.saveString(Preference.Keys.JsonWebToken,loginResponse.jwt)
                         liveDataStatus.postValue(LoginStatus(HIDE_LOADER,null))
@@ -45,13 +45,11 @@ class LoginViewModal : ViewModel() {
                 }
 
                 is NetworkResultWrapper.NetworkError -> {
-                    d("rohitclean","Network Error")
                     liveDataStatus.postValue(LoginStatus(HIDE_LOADER,null))
-                    liveDataStatus.postValue(LoginStatus(ERROR,"Error while loggin in"))
+                    liveDataStatus.postValue(LoginStatus(ERROR,"Error while logging in"))
                 }
 
                 is NetworkResultWrapper.GenericError -> {
-                    d("rohitclean","Generic Error : ${networkResponse}")
                     liveDataStatus.postValue(LoginStatus(HIDE_LOADER,null))
                     liveDataStatus.postValue(LoginStatus(ERROR,"Error while loggin in"))
                 }
